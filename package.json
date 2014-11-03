@@ -1,0 +1,14 @@
+{
+  "name": "austin-tv",
+  "version": "1.0.0",
+  "description": "WebSocket Server/Client to watch videos in sync",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js --test"
+  },
+  "keywords": [
+    "video"
+  ],
+  "author": "Nick Pelone <npelone@unca.edu>",
+  "license": "MIT"
+}
