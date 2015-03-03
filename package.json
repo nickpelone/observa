@@ -10,5 +10,8 @@
     "video"
   ],
   "author": "Nick Pelone <npelone@unca.edu>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.12.2"
+  }
 }
