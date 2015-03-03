@@ -7,7 +7,7 @@ Root Directory:
  atv-modules/
              *Core modules will live here*
              ffmpeg-handler
-             ffmpeg-distributor
+             ffmpeg-distributor <-- implementing is a stretch goal, to push across multiple ec2 instances for encoding
              web-middleware <---- Web interface, web middleware(API endpoints), database stuff
              atv-middleware/  <---this is where the plugins live
                             atv-plugin-youtube/ <--- the reference youtube plugin
