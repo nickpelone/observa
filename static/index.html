@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>ATV - Share with Friends</title>
     </head>
     <body>
-        <h1>ATV Demos</h1>
+        <h1>ATV Demo</h1>
         <br>
         <div id="basic_webrtc_demo_area">
-            A Basic test of WebRTC input grabbing.
+            A Basic test of WebRTC input grabbing and video source signaling.
+            <button id="start_demo_one">Start / Return to Webcam</button>
             <br>
             <video id="basic_webrtc_demo_video" src=""></video>
-
+            <br>
+            <button id="start_demo_two">Switch to YouTube input</button>
+            <button id="pause_play_button">Play/Pause video</button>
         </div>
+
     <!--Load JS-->
         <!-- jQuery first -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
