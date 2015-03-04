@@ -19,6 +19,15 @@
         console.log("navigator.getUserMedia error: " + error);
     }
 
+    function playPause(video_element) {
+        if (video_element.paused) {
+            video_element.play();
+        } else {
+            video_element.pause();
+        }
+    }
+
+
     //grab the user media object and pass it to onMediaOpen
     $("#start_demo_one").click(function () {
         navigator.getUserMedia(videoConstaints, onMediaOpen, onMediaError);
@@ -32,11 +41,6 @@
     });
     $("#pause_play_button").click(function () {
         var video = $("#basic_webrtc_demo_video")[0];
-
-        if(video.paused) {
-            video.play();
-        } else {
-            video.pause();
-        }
+        playPause(video);
     });
 }());
