@@ -2,17 +2,18 @@ Root Directory:
 
 /
  package.json
- app.js <----- This should drive/start the austin-tv backend as well as the web frontend (express static)
- atv-modules/
+ app.js <----- This should drive/start the observa backend as well as the web frontend (express static)
+
+ observa-modules/
              *Core modules will live here*
              ffmpeg-handler
              ffmpeg-distributor <-- implementing is a stretch goal, to push across multiple ec2 instances for encoding
              web-middleware <---- Web interface, web middleware(API endpoints), database stuff
-             atv-middleware/  <---this is where the plugins live
-                            atv-plugin-youtube/ <--- the reference youtube plugin
+             observa-middleware/  <---this is where the plugins live
+                            observa-plugin-youtube/ <--- the reference youtube plugin
                                                      receives a youtube link from web interface(listens on plugin 'daemon')
-                                                     calls youtube-dl, gets resulting .mp4 file, and then asks ffmpeg-handler
-                                                     to begin an rtmp stream for <user_id> that replaces the running one in-line (nginx)
-             plugin-daemon.js <- would this be better as just the app.js and then launch *everything* as an atv plugin?
+                                                     calls youtube-dl, gets resulting .mp4 file, is checked,
+                                                     and then is sent to the client as the new video element source
+             plugin-daemon.js <- would this be better as just the app.js and then launch *everything* as an observa plugin?
 /
 

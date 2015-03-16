@@ -1,6 +1,6 @@
 {
-  "name": "austin-tv",
-  "version": "1.0.0",
+  "name": "observa",
+  "version": "0.1-alpha",
   "description": "WebSocket Server/Client to watch videos in sync",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "video"
   ],
   "author": "Nick Pelone <npelone@unca.edu>",
-  "license": "MIT",
+  "license": "?",
   "dependencies": {
     "express": "^4.12.2"
   }
