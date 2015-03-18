@@ -1,10 +1,10 @@
 {
   "name": "observa",
-  "version": "0.1-alpha",
+  "version": "0.1.0",
   "description": "WebSocket Server/Client to watch videos in sync",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js --test"
+    "test": "node index.js"
   },
   "keywords": [
     "video"
