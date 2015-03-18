@@ -13,7 +13,7 @@ exports.startWebInterface = function (port) {
     });
     
     eApp.listen(port, function () {
-        console.log("Web Interface is up");
+        console.log("Web Interface is up on port " + port);
     });
     
 };
