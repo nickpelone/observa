@@ -1,0 +1,24 @@
+{
+  "name": "Observa",
+  "version": "0.0.1",
+  "homepage": "https://github.com/nickpelone/observa",
+  "authors": [
+    "Nick Pelone <npelone@unca.edu>"
+  ],
+  "description": "WebRTC application for sharing with friends",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.5",
+    "core-elements": "Polymer/core-elements#~0.5.5",
+    "paper-elements": "Polymer/paper-elements#~0.5.5"
+  }
+}
