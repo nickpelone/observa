@@ -1,5 +1,6 @@
 (function () {
     "use strict";
+    console.log("call-client.js loaded");
 
     //declarations
     //
