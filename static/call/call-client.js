@@ -5,8 +5,19 @@
     //declarations
     //
 
+    function successCallback(videoStream) {
+        console.log("successCallback() was called");
+    }
+
     function startup() {
         console.log("startup() was called");
+        console.log("Requesting local video stream...");
+        startButton.disabled = true;
+        var constraints = {};
+
+        getUserMedia(constraints, successCallback, function(error) {
+            console.log("error: " + error);
+        });
     }
 
     function startCall() {
