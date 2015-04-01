@@ -79,6 +79,12 @@
 
     function end() {
         console.log("end() was called");
+        localPeerConnection.close();
+        remotePeerConnection.close();
+        localPeerConnection = null;
+        remotePeerConnection = null;
+        endButton.disabled = true;
+        callButton.disabled = false;
     }
 
 
