@@ -52,20 +52,20 @@
         if (localVideoStream.getAudioTracks().length > 0) {
             //if there are available local audio tracks
             //TODO: allow user to pick their own
-            console.log("Using audio device: " + localVideoStream.getVideoTracks[0].label);
+            console.log("Using audio device: " + localVideoStream.getAudioTracks()[0].label);
         }
 
         var observaServers = null;
-        localPeerConnection = new RTCPeerConnection(servers);
+        localPeerConnection = new RTCPeerConnection(observaServers);
         console.log("Created local peer connection object localPeerConnection");
         localPeerConnection.onicecandidate = gotLocalIceCandidate;
 
-        remotePeerConnection = new RTCPeerConnection(servers);
+        remotePeerConnection = new RTCPeerConnection(observaServers);
         console.log("Created remote peer connection object remotePeerConnection");
         remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
         remotePeerConnection.onaddstream = gotRemoteStream;
 
-        localPeerConnection.addStream(localStream);
+        localPeerConnection.addStream(localVideoStream);
         console.log("Added localStream to localPeerConnection");
         localPeerConnection.createOffer(gotLocalDescription, errorCallback);
 
