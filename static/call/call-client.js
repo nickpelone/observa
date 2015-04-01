@@ -2,9 +2,6 @@
     "use strict";
     console.log("call-client.js loaded");
 
-    navigator.getUserMedia = navigator.getUserMedia ||
-    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
     //declarations
     //
 
