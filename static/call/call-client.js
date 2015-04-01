@@ -2,6 +2,9 @@
     "use strict";
     console.log("call-client.js loaded");
 
+    navigator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
     //declarations
     //
 
@@ -16,6 +19,9 @@
 
     function successCallback(videoStream) {
         console.log("successCallback() was called");
+        localVideoElement.src = URL.createObjectURL(videoStream);
+        localVideoStream = videoStream;
+        callButton.disabled = false;
     }
 
     function errorCallback(error) {
@@ -26,17 +32,18 @@
         console.log("startup() was called");
         console.log("Requesting local video stream...");
         startButton.disabled = true;
-        var constraints = {};
+        var constraints = {
+            audio: true,
+            video: true
+        };
 
-        getUserMedia(constraints, successCallback, function (error) {
-            console.log("error: " + error);
-        });
+        navigator.getUserMedia(constraints, successCallback, errorCallback);
     }
 
     function startCall() {
         console.log("startCall() was called");
         callButton.disabled = true;
-        hangupButton.disabled = false;
+        endButton.disabled = false;
 
         if (localVideoStream.getVideoTracks().length > 0) {
             // if there are available local video tracks
