@@ -64,6 +64,19 @@
 
     }
 
+    function gotLocalDescription(description) {
+        localPeerConnection.setLocalDescription(description);
+        console.log("Received Offer from localPeerConnection: \n" + description.sdp);
+        remotePeerConnection.setRemoteDescription(description);
+        remotePeerConnection.createAnswer(gotRemoteDescription, errorCallback);
+    }
+
+    function gotRemoteDescription(description) {
+        remotePeerConnection.setLocalDescription(description);
+        console.log("Answer from remotePeerConnection: \n" + description.sdp);
+        localPeerConnection.setRemoteDescription(description);
+    }
+
     function end() {
         console.log("end() was called");
     }
