@@ -87,6 +87,24 @@
         callButton.disabled = false;
     }
 
+    function gotRemoteStream(event) {
+        remoteVideoElement.src = URL.createObjectURL(event.stream);
+        console.log("Received remote WebRTC stream");
+    }
+
+    function gotLocalIceCandidate(event) {
+        if (event.candidate) {
+            remotePeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+            console.log("Got a local ICE candidate: \n" + event.candidate.candidate);
+        }
+    }
+
+    function gotRemoteIceCandidate(event) {
+        if (event.candidate) {
+            localPeerConnection.addIceCandidate(new RTCIceCandidate(event.candidate));
+            console.log("Got a remote ICE candidate: \n" + event.candidate.candidate);
+        }
+    }
 
 
     //set default interface states
