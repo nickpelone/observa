@@ -4,6 +4,8 @@
 
     //declarations
     //
+    var socket = new io.Socket();
+    socket.connect("" + document.URL + ":1234");
 
     var localVideoStream, localPeerConnection, remotePeerConnection;
 
@@ -13,6 +15,11 @@
     var startButton = $("#start_button")[0];
     var callButton = $("#call_button")[0];
     var endButton = $("#end_button")[0];
+
+    //peer connection options
+    var pc_config = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+
+var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
 
     function successCallback(videoStream) {
         console.log("successCallback() was called");
