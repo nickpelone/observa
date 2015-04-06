@@ -5,11 +5,9 @@
     //declarations
     //
     var socket = io.connect('localhost:1234');
-    socket.on('hello', function (data) {
-        console.log("received a hello from socket.io");
-    });
 
-    var localVideoStream, localPeerConnection, remotePeerConnection;
+
+    var localStream, remoteStream, peerConnection;
 
     var localVideoElement = $("#local_video")[0];
     var remoteVideoElement = $("#remote_video")[0];
@@ -18,10 +16,59 @@
     var callButton = $("#call_button")[0];
     var endButton = $("#end_button")[0];
 
-    //peer connection options
-    var pc_config = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
 
-var pc_constraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
+
+    //peer connection options
+    var pcConfig = {'iceServers': [{'url': 'stun:stun.l.google.com:19302'}]};
+    var pcConstraints = {'optional': [{'DtlsSrtpKeyAgreement': true}]};
+
+    //flag variables
+    var isCallReady;
+    var isCaller = false;
+    var isStarted = false;
+    var turnReady;
+
+    //sdp options - mandate that clients at least receive audio / video
+    var sdpConstraints = {'mandatory' :
+                          { 'OfferToReceiveAudio' : true,
+                           'OfferToReceiveVideo' : true
+                          }
+                         };
+
+    //socket.io functions and wrappers
+
+    function sendObservaSocketMsg(message) {
+        console.log("Client application is sending message: " + message + " to Observa server");
+        socket.emit('message', message);
+    }
+
+    socket.on('hello', function (data) {
+        console.log("received a hello from socket.io");
+    });
+
+    socket.on('message', function(message) {
+        console.log("Client application received message: " + message + " from Observa server");
+        if(message === 'got user media') {
+            // server reports 'got user media'
+            conditionalStartCall();
+        } else if (message.type === 'offer') {
+            if(!isCaller && !isStarted) {
+                conditionalStartCall();
+            }
+
+        peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+        callAnswer();
+        } else if (message.type === 'answer' && isStarted) {
+            peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+        } else if (message.type === 'candidate' && isStarted) {
+            var candidate = new RTCIceCandidate({sdpMLineIndex: message.label,
+                                                 candidate: message.candidate
+                                                });
+            peerConnection.addIceCandidate(candidate);
+        } else if (message === 'bye') {
+            handleRemoteHangup();
+        }
+    });
 
     function successCallback(videoStream) {
         console.log("successCallback() was called");
