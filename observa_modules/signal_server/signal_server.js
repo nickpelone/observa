@@ -14,7 +14,7 @@ exports.startSignalServer = function (port) {
         console.log("Sent a hello to: " + socket.id);
         function log() {
             var msgArray = ["!! Message from server: "];
-            for (var i = 0; i < arugments.length; i++) {
+            for (var i = 0; i < arguments.length; i++) {
                 msgArray.push(arguments[i]);
             }
             socket.emit('log', msgArray);
@@ -26,8 +26,10 @@ exports.startSignalServer = function (port) {
         });
         
         socket.on('create or join', function(room) {
-            var clientCount = io.sockets.clients(room).length;
+            console.log("got a create/join");
             
+            var clients = io.sockets.adapter.rooms[room];
+            var clientCount = (typeof clients !== 'undefined') ? Object.keys(clients).length : 0;
             log("Chatroom " + room + ' has ' + clientCount + ' client(s)');
             log("Request to create or join room " + room);
             
@@ -35,10 +37,13 @@ exports.startSignalServer = function (port) {
                 //the requested room is empty
                 socket.join(room);
                 socket.emit('created', room);
+                console.log('room ' + room + ' created, clientcount:' + clientCount);
             } else if (clientCount === 1) {
                 io.sockets.in(room).emit('join', room);
                 socket.join(room);
                 socket.emit('joined', room);
+                console.log('trying to tell client to join ' + room);
+
             } else {
                 //for direct calls we place a limit at 2 clients
                 socket.emit('full', room);
