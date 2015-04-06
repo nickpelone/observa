@@ -200,12 +200,12 @@
 
     function startObservaCall() {
         console.log("Sending call offer to connected peer");
-        peerConnection.createOffer(setLocalAndSendMsg, genericErrorHandler);
+        peerConnection.createOffer(setLocalAndSendMsg, genericErrorHandler, pcConstraints);
     }
 
     function answerObservaCall() {
         console.log("Sending call answer to connected peer");
-        peerConnection.createAnswer(setLocalAndSendMsg, genericErrorHandler);
+        peerConnection.createAnswer(setLocalAndSendMsg, genericErrorHandler, pcConstraints);
     }
 
     function setLocalAndSendMsg(sessionDesc) {
