@@ -217,15 +217,20 @@
 
     function requestTurn(turnURL) {
         console.log("No TURN servers have been set up, getting one from compute engine!");
-        $.getJSON("https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913&callback=?", function (data) {
-            var turnServers = JSON.parse(data.responseData);
-            log("Got TURN server! %j", turnServers);
-            peerConnection.iceServers.push({
-                'url': 'turn:' + turnServers.username + '@' + turnServers.turn,
-                'credential': turnServer.password
-            });
-            turnReady = true;
-        });
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var turnServers = JSON.parse(xhr.responseText);
+                log("Got TURN server! %j", turnServers);
+                peerConnection.iceServers.push({
+                    'url': 'turn:' + turnServers.username + '@' + turnServers.turn,
+                    'credential': turnServer.password
+                });
+                turnReady = true;
+            }
+        };
+        xhr.open('GET', turnURL, true);
+        xhr.send();
     }
 
     function handleRemoteStreamAdded(event) {
