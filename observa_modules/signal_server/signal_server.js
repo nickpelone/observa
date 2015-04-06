@@ -10,6 +10,8 @@ exports.startSignalServer = function (port) {
     var io = require('socket.io').listen(signalServerApp);
     
     io.sockets.on('connection', function (socket) {
+        socket.emit('hello', {'hello': 'world'});
+        console.log("Sent a hello to: " + socket.id);
         function log() {
             var msgArray = ["!! Message from server: "];
             for (var i = 0; i < arugments.length; i++) {
