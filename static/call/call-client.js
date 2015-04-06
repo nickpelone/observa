@@ -4,8 +4,10 @@
 
     //declarations
     //
-    var socket = new io.Socket();
-    socket.connect("" + document.URL + ":1234");
+    var socket = io.connect('localhost:1234');
+    socket.on('hello', function (data) {
+        console.log("received a hello from socket.io");
+    });
 
     var localVideoStream, localPeerConnection, remotePeerConnection;
 
