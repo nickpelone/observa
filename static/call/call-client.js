@@ -151,9 +151,8 @@
         if (!isStarted && typeof localStream != 'undefined' && isCallReady) {
             //if we havent started, the local stream is defined, and if the channel is ready
             console.log("conditionalStartCall()");
-            createObservaPeerConnection();
             peerConnection.addStream(localStream);
-            peerConnection = createObservaPeerConnection();
+            createObservaPeerConnection();
 
             isStarted = true;
 
@@ -166,17 +165,15 @@
 
     function createObservaPeerConnection() {
         try {
-            var peer = new RTCPeerConnection(null);
-            peer.onicecandidate = handleIceCandidate;
-            peer.onaddstream = handleRemoteStreamAdded;
-            peer.onremovestream = handleRemoteStreamRemoved;
+            peerConnection = new RTCPeerConnection(null);
+            peerConnection.onicecandidate = handleIceCandidate;
+            peerConnection.onaddstream = handleRemoteStreamAdded;
+            peerConnection.onremovestream = handleRemoteStreamRemoved;
             console.log('Created RTCPeerConnection for this Observa call');
-            return peer;
         } catch (error) {
             console.log("Error during RTCPeerConnection creation.");
             genericErrorHandler(error);
         }
-        return null;
     }
 
     function handleIceCandidate(event) {
