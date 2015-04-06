@@ -152,8 +152,9 @@
             //if we havent started, the local stream is defined, and if the channel is ready
             console.log("conditionalStartCall()");
             createObservaPeerConnection();
-            peerConnection = createObservaPeerConnection();
             peerConnection.addStream(localStream);
+            peerConnection = createObservaPeerConnection();
+
             isStarted = true;
 
             console.log('Client is Caller: ', isCaller);
