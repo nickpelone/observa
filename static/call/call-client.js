@@ -3,7 +3,7 @@
     console.log("call-client.js loaded");
 
     /* variable declarations */
-    var socket = io.connect('localhost:1234');
+    var socket = io.connect('observa.nickpelone.com:1234');
     var localStream, remoteStream, peerConnection;
     var localVideoElement = $("#local_video")[0];
     var remoteVideoElement = $("#remote_video")[0];
@@ -217,9 +217,12 @@
 
     function requestTurn(turnURL) {
         console.log("No TURN servers have been set up, getting one from compute engine!");
-        $.get(turnURL, function(turnResponse) {
-            var turnServers = JSON.parse(turnResponse);
-            console.log("Got TURN server! %j", turnServers);
+        $.ajax({
+            type: 'POST',
+            dataType: 'jsonp',
+            url: 'https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913'
+        }, function (turnServers) {
+            log("Got TURN server! %j", turnServers);
             peerConnection.iceServers.push({
                 'url': 'turn:' + turnServers.username + '@' + turnServers.turn,
                 'credential': turnServer.password
