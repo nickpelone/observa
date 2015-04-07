@@ -93,6 +93,7 @@ socket.on('log', function (array) {
 /* observa client call functions */
 function handleUserMedia(stream) {
     console.log("Getting local video stream...");
+    var localVideoElement = $("#local_video")[0];
     localVideoElement.src = URL.createObjectURL(stream);
     localStream = stream;
     sendObservaSocketMsg('got user media');
@@ -159,6 +160,7 @@ function handleIceCandidate(event) {
 
 function handelRemoteStreamAdded(event) {
     console.log("Remote stream added!");
+    var remoteVideoElement = $("#remote_video")[0];
     remoteVideoElement.src = URL.createObjectURL(event.stream);
     remoteStream = event.stream;
 }
@@ -196,6 +198,7 @@ function requestTurn(turnURL) {
 
 function handleRemoteStreamAdded(event) {
     console.log("Remote client stream added!");
+    var remoteVideoElement = $("#remote_video")[0];
     remoteVideoElement.src = URL.createObjectURL(event.stream);
 }
 
