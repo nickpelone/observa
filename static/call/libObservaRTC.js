@@ -58,10 +58,10 @@ socket.on('message', function (message) {
         if (!isCaller && !isStarted) {
             conditionalStartCall();
         }
-        peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+        peerConnection.setRemoteDescription(new RTCSessionDescription(message), onSdpSuccess, onSdpFailure);
         answerObservaCall();
     } else if (message.type === 'answer' && isStarted) {
-        peerConnection.setRemoteDescription(new RTCSessionDescription(message));
+        peerConnection.setRemoteDescription(new RTCSessionDescription(message), onSdpSuccess, onSdpFailure);
     } else if (message.type === 'candidate' && isStarted) {
 
         var candidate = new RTCIceCandidate({
@@ -167,6 +167,15 @@ function handleIceCandidate(event) {
     }
 }
 
+function onSdpSuccess() {
+    console.log("success setting description");
+}
+
+function onSdpFailure(error) {
+    console.log("onSdpFailure!: " +  error);
+}
+
+
 function handleRemoteStreamAdded(event) {
     console.log("Remote stream added!");
     var remoteVideoElement = $("#remote_video")[0];
@@ -186,7 +195,7 @@ function answerObservaCall() {
 
 function setLocalAndSendMsg(sessionDesc) {
     //TODO: set preferred codecs (opus)
-    peerConnection.setLocalDescription(sessionDesc);
+    peerConnection.setLocalDescription(sessionDesc, onSdpSuccess, onSdpFailure);
     console.log("setLocalAndSendMsg: set local descrption, now sending");
     sendObservaSocketMsg(sessionDesc);
 }
