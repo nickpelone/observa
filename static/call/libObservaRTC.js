@@ -186,8 +186,8 @@ function answerObservaCall() {
 
 function setLocalAndSendMsg(sessionDesc) {
     //TODO: set preferred codecs (opus)
-    peerConnection.setLocalDescription(sessionDesc);
     peerConnection.addStream(remoteStream);
+    peerConnection.setLocalDescription(sessionDesc);
     console.log("setLocalAndSendMsg: set local descrption, now sending");
     sendObservaSocketMsg(sessionDesc);
 }
