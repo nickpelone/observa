@@ -188,7 +188,7 @@ function setLocalAndSendMsg(sessionDesc) {
     //TODO: set preferred codecs (opus)
     peerConnection.setLocalDescription(sessionDesc);
     peerConnection.addStream(remoteStream);
-    console.log("setLocalAndSednMsg: set local descrption, now sending");
+    console.log("setLocalAndSendMsg: set local descrption, now sending");
     sendObservaSocketMsg(sessionDesc);
 }
 
@@ -203,12 +203,6 @@ function requestTurn(turnURL) {
         });
         turnReady = true;
     });
-}
-
-function handleRemoteStreamAdded(event) {
-    console.log("Remote client stream added!");
-    var remoteVideoElement = $("#remote_video")[0];
-    remoteVideoElement.src = URL.createObjectURL(event.stream);
 }
 
 function handleRemoteStreamRemoved(event) {
