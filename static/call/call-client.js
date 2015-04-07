@@ -3,25 +3,8 @@
     console.log("call-client.js loaded");
 
     /* variable declarations */
-    var localVideoElement = $("#local_video")[0];
-    var remoteVideoElement = $("#remote_video")[0];
     var endButton = $("#end_button")[0];
     var room = '';
-
-    //flag variables
-    var isCallReady;
-    var isCaller;
-    var isStarted = false;
-    var turnReady;
-
-    //sdp options - mandate that clients at least receive audio / video
-    var sdpConstraints = {
-        'mandatory': {
-            'OfferToReceiveAudio': true,
-            'OfferToReceiveVideo': true
-        }
-    //set default i
-    };
 
     //set up the 'room' var to handle individual call sessions
     if (room === '') {
