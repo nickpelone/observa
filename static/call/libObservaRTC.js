@@ -1,6 +1,13 @@
 /* We're a library, we *want* to add to global namespace, so no IIFE */
 var socket = io.connect('observa.nickpelone.com:1234');
 
+
+//flag variables
+var isCallReady;
+var isCaller;
+var isStarted = false;
+var turnReady;
+
 //peer connection options, use google STUN for NAT traversal
 //todo: auto-magically specify TURN as well
 var pcConfig = {
