@@ -167,7 +167,7 @@ function handleIceCandidate(event) {
     }
 }
 
-function handelRemoteStreamAdded(event) {
+function handleRemoteStreamAdded(event) {
     console.log("Remote stream added!");
     var remoteVideoElement = $("#remote_video")[0];
     remoteVideoElement.src = URL.createObjectURL(event.stream);
