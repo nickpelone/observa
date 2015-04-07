@@ -11,13 +11,13 @@ exports.startWebInterface = function (port) {
     var request = require('request');
     eApp.use(express.static(path.join(__dirname,"../../static")));
     
-    eApp.get('/turn-servers', function (request, response) {
+    eApp.get('/turn-servers', function (req, res) {
         //get turn servers from google
         var url = "https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913";
         request(url, function (error, response, body) {
                     if (!error && response.statusCode === 200) {
-                        response.setHeader('Content-Type', 'application/json');
-                        response.end(body);
+                        res.setHeader('Content-Type', 'application/json');
+                        res.end(body);
                     }
         });
     });
