@@ -75,12 +75,12 @@
             if (!isCaller && !isStarted) {
                 conditionalStartCall();
             }
-
             peerConnection.setRemoteDescription(new RTCSessionDescription(message));
             answerObservaCall();
         } else if (message.type === 'answer' && isStarted) {
             peerConnection.setRemoteDescription(new RTCSessionDescription(message));
         } else if (message.type === 'candidate' && isStarted) {
+
             var candidate = new RTCIceCandidate({
                 sdpMLineIndex: message.label,
                 candidate: message.candidate
@@ -151,8 +151,8 @@
         if (!isStarted && typeof localStream != 'undefined' && isCallReady) {
             //if we havent started, the local stream is defined, and if the channel is ready
             console.log("conditionalStartCall()");
-            peerConnection.addStream(localStream);
             createObservaPeerConnection();
+            peerConnection.addStream(localStream);
 
             isStarted = true;
 
@@ -209,6 +209,7 @@
     function setLocalAndSendMsg(sessionDesc) {
         //TODO: set preferred codecs (opus)
         peerConnection.setLocalDescription(sessionDesc);
+        peerConnection.addStream(remoteStream);
         console.log("setLocalAndSednMsg: set local descrption, now sending");
         sendObservaSocketMsg(sessionDesc);
     }
