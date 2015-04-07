@@ -8,6 +8,8 @@ var isCaller;
 var isStarted = false;
 var turnReady;
 
+var localStream, remoteStream, peerConnection;
+
 //peer connection options, use google STUN for NAT traversal
 //todo: auto-magically specify TURN as well
 var pcConfig = {
