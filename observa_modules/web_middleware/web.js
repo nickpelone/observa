@@ -14,9 +14,7 @@ exports.startWebInterface = function (port) {
     eApp.get('/turn-servers', function (request, response) {
         //get turn servers from google
         var url = "https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913";
-        request({url: url,
-                 json: true,
-                }, function (error, response, body) {
+        request(url, function (error, response, body) {
                     if (!error && response.statusCode === 200) {
                         response.setHeader('Content-Type', 'application/json');
                         response.end(body);
