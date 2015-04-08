@@ -2,3 +2,8 @@
 .chat_video {
     display: inline-block;
 }
+
+#end_button {
+    background:red;
+    color:white;
+}
