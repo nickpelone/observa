@@ -230,6 +230,10 @@ function stopObservaCall() {
     peerConnection = null;
 }
 
+function handleRemoteHangup() {
+    socket.emit('bye');
+}
+
 
 /* tell the socket bye before the DOM is destroyed (page close) */
 window.onbeforeunload = function (event) {
