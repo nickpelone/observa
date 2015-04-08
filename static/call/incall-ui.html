@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Observa - In Call</title>
-        <link rel="stylesheet" type="text/css" href="incall.css">
-    </head>
-    <body>
-    <video id="local_video" class="chat_video" autoplay="autoplay" muted="muted"></video>
-    <video id="remote_video" class="chat_video" autoplay="autoplay" ></video>
-    <div id="call_controls">
-        <button id="end_button">Hang Up</button>
+
+<head>
+    <title>Observa - In Call</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <!--Load the Polymer platform / polyfills, the DOM construction is dependent on this-->
+    <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-button.html">
+    <link rel="import" href="../bower_components/">
+    <link rel="stylesheet" type="text/css" href="incall.css">
+</head>
+
+<body unresolved>
+    <div class="container">
+        <div id="header">
+            <paper-item>
+                <h1>Observa - Call a Friend</h1>
+            </paper-item>
+        </div>
+        <br>
+        <div id="video_container">
+            <video id="local_video" class="chat_video" autoplay="autoplay" muted="muted"></video>
+            <video id="remote_video" class="chat_video" autoplay="autoplay"></video>
+        </div>
+        <div id="call_controls">
+            <paper-button id="end_button">Hang Up</paper-button>
+        </div>
     </div>
     <!--jquery-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -20,5 +38,6 @@
     <script type="text/javascript" src="libObservaRTC.js"></script>
     <!--our web client's JS-->
     <script type="text/javascript" src="call-client.js"></script>
-    </body>
+</body>
+
 </html>
