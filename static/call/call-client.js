@@ -18,6 +18,8 @@
 
     $("#end_button").click(hangup);
 
+
+
     getUserMedia(userMediaConstraints, handleUserMedia, genericErrorHandler);
     console.log("Got local user media with constraints %j", userMediaConstraints);
     if (room !== '') {

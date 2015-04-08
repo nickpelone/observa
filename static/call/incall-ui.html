@@ -10,6 +10,8 @@
     <link rel="import" href="../bower_components/polymer/polymer.html">
     <link rel="import" href="../bower_components/paper-button/paper-button.html">
     <link rel="import" href="../bower_components/paper-item/paper-item.html">
+    <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+    <link rel="import" href="../bower_components/core-icons/core-icons.html">
     <link rel="stylesheet" type="text/css" href="incall.css">
 </head>
 
@@ -21,14 +23,19 @@
             </paper-item>
         </div>
         <br>
-        <div id="video_container">
-            <video id="local_video" class="chat_video" autoplay="autoplay" muted="muted"></video>
-            <video id="remote_video" class="chat_video" autoplay="autoplay"></video>
-        </div>
-        <div id="call_controls">
-            <paper-button id="end_button">Hang Up</paper-button>st
-        </div>
+        <center>
+            <div id="video_container">
+                <video id="local_video" class="chat_video" autoplay="autoplay" muted="muted"></video>
+                <video id="remote_video" class="chat_video" autoplay="autoplay" muted="muted" src="static.mp4" loop="loop"></video>
+
+            </div>
+            <div id="call_controls">
+                <paper-fab icon="close" id="end_button"></paper-fab>
+                <paper-fab icon="add" id="plugin_button"></paper-fab>
+            </div>
+        </center>
     </div>
+
     <!--jquery-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <!--socket.io-->
