@@ -14,7 +14,7 @@ var localStream, remoteStream, peerConnection;
 //todo: auto-magically specify TURN as well
 var pcConfig = {
     'iceServers': [{
-        'url': 'stun:stun.l.google.com:19302'
+        'url': 'stun:stun1.l.google.com:19302'
         },
                    {'url':'turn:observa.nickpelone.com:3478',
 'credential': 'pleasework',
