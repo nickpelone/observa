@@ -16,9 +16,8 @@ var pcConfig = {
     'iceServers': [{
         'url': 'stun:stun.l.google.com:19302'
         },
-                   {'url':'turn:observa.nickpelone.com:3478',
- 'username': 'observa',
-'credentials': 'pleasework'}]
+                   {'url':'turn:observa@observa.nickpelone.com:3478',
+'credential': 'pleasework'}]
 };
 
 //peer connection constraints
