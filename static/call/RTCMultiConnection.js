@@ -4236,10 +4236,10 @@ connection.rtcConfiguration
         // "mozSrcObject" is always preferred over "src"!!
         mediaElement[isFirefox ? 'mozSrcObject' : 'src'] = isFirefox ? stream : window.webkitURL.createObjectURL(stream);
 
-        mediaElement.controls = true;
+        mediaElement.controls = false; //observa UI patch
         mediaElement.autoplay = !!session.remote;
         mediaElement.muted = session.remote ? false : true;
-	mediaElement.className = session.remote ? "remote_video" : "local_video";
+	mediaElement.className = session.remote ? "remote_video" : "local_video"; //observa UI patch
 
 
 
@@ -5102,7 +5102,8 @@ connection.rtcConfiguration
 
         // www.RTCMultiConnection.org/docs/onstream/
         connection.onstream = function(e) {
-            connection.body.insertBefore(e.mediaElement, connection.body.firstChild);
+            var insertPoint = document.getElementById("video_container").childNodes[0];
+            connection.body.insertBefore(e.mediaElement, insertPoint); //patch for observa UI
         };
 
         // www.RTCMultiConnection.org/docs/onStreamEndedHandler/
