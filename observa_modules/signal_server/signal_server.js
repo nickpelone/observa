@@ -13,7 +13,7 @@ exports.startSignalServer = function (port) {
         socket.emit('hello', {'hello': 'world'});
         console.log("Sent a hello to: " + socket.id);
         function log() {
-            var msgArray = ["!! Message from server: "];
+            var msgArray = ["!! Message from Observa Server: "];
             for (var i = 0; i < arguments.length; i++) {
                 msgArray.push(arguments[i]);
             }
@@ -21,12 +21,12 @@ exports.startSignalServer = function (port) {
         }
         
         socket.on('message', function (message) {
-            log('Got a message:', message);
+            log('Observa Server Got a message:', message);
             socket.broadcast.emit('message', message);
         });
         
         socket.on('create or join', function(room) {
-            console.log("got a create/join");
+            console.log("Observa Server got a create/join");
             
             var clients = io.sockets.adapter.rooms[room];
             var clientCount = (typeof clients !== 'undefined') ? Object.keys(clients).length : 0;
