@@ -5103,7 +5103,7 @@ connection.rtcConfiguration
         // www.RTCMultiConnection.org/docs/onstream/
         connection.onstream = function(e) {
             var insertPoint = document.getElementById("video_container");
-            connection.body.insertBefore(e.mediaElement, insertPoint); //patch for observa UI
+            $("#video_container").append(e.mediaElement); //patch for observa UI
         };
 
         // www.RTCMultiConnection.org/docs/onStreamEndedHandler/
