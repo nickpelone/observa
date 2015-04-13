@@ -13,10 +13,7 @@ var localStream, remoteStream, peerConnection;
 //peer connection options, use google STUN for NAT traversal
 //todo: auto-magically specify TURN as well
 var pcConfig = {
-    'iceServers': [
-                   {'url':'turn:observa.nickpelone.com:3478',
-'credential': 'pleasework',
-'user': 'observa'}]
+    'iceServers': [{'url':'stun:stun.services.mozilla.com'}]
 };
 
 //peer connection constraints
