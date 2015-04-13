@@ -1,4 +1,4 @@
 var connection = new RTCMultiConnection().connect();
-document.querySelector('#openNewSessionButton').onclick = function() {
-    connection.open();
-};
+$("#start_button").click(function (event) {
+    connection.connect();
+});
