@@ -15,7 +15,10 @@ var localStream, remoteStream, peerConnection;
 var pcConfig = {
     'iceServers': [{
         'url': 'stun:stun.l.google.com:19302'
-        }]
+        },
+                   {'url':'turn:observa.nickpelone.com:3478',
+ 'username': 'observa',
+'credentials': 'pleasework'}]
 };
 
 //peer connection constraints
@@ -115,14 +118,7 @@ function genericErrorHandler(error) {
     console.log("ERROR in Observa Client: " + error);
 }
 
-if (location.hostname != 'localhost') {
-    //we need a TURN server as well as a STUN server
-    //this request URL is taken from a bitbucket codelab,
-    //located at https://bitbucket.org/webrtc/codelab/src/c75c8e837a125441d2ee008c55348ac5a24a85d4/complete/step6/js/main.js?at=master
-    //it requests a TURN from Google
-    //todo: investigate feasability of coupling TURN server with observa distributions
-    requestTurn('https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913');
-}
+
 
 function conditionalStartCall() {
     if (!isStarted && typeof localStream != 'undefined' && isCallReady) {
@@ -198,19 +194,6 @@ function setLocalAndSendMsg(sessionDesc) {
     peerConnection.setLocalDescription(sessionDesc, onSdpSuccess, onSdpFailure);
     console.log("setLocalAndSendMsg: set local descrption, now sending");
     sendObservaSocketMsg(sessionDesc);
-}
-
-function requestTurn(turnURL) {
-    console.log("No TURN servers have been set up, getting one from compute engine!");
-    $.getJSON("https://computeengineondemand.appspot.com/turn?username=41784574&key=4080218913&callback=?", function (data) {
-        var turnServers = JSON.parse(data.responseData);
-        log("Got TURN server! %j", turnServers);
-        peerConnection.iceServers.push({
-            'url': 'turn:' + turnServers.username + '@' + turnServers.turn,
-            'credential': turnServer.password
-        });
-        turnReady = true;
-    });
 }
 
 function handleRemoteStreamRemoved(event) {
