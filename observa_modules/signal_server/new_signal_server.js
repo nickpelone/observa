@@ -12,8 +12,10 @@ exports.startSignalServer = function (port) {
 
     /* this is all the signaling required by RTCMultiConnection */
     io.sockets.on('connection', function (socket) {
+        console.log("A client connected.");
         var pluginVideoCount = 0;
         socket.on('message', function (data) {
+            console.log("Observa signal server received: " + data);
             socket.broadcast.emit('message', data);
         });
 
