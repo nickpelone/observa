@@ -50,4 +50,5 @@ exports.startSignalServer = function (port) {
             });
         });
     });
+    console.log("Signal Server is up on port " + port);
 };
