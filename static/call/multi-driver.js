@@ -49,9 +49,10 @@ $("#end_button").click(function (event) {
 });
 
 $("#plugin_button").click(function (event) {
+    var prompted_video = prompt("Please enter a YouTube video URL.", 'https://www.youtube.com/watch?v=rjQtzV9IZ0Q');
     var pluginRequest = {
         'plugin': 'youtube',
-        'request': 'https://www.youtube.com/watch?v=rjQtzV9IZ0Q'
+        'request': prompted_video
     };
     $.ajax({
         type: 'POST',
