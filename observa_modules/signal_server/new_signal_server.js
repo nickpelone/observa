@@ -31,6 +31,7 @@ exports.startSignalServer = function (port) {
 
             /* a plugin looks like this:
                 {
+                    'plugin': 'youtube',
                     'name': 'Youtube reference plugin',
                     'action': 'youtube-dl -o'
                 }
