@@ -18,6 +18,7 @@ exports.startWebInterface = function (port) {
     eApp.use(bodyParser.urlencoded({ extended: true }));
 
     eApp.post('/plugin-handler', function (req, res) {
+        req.body = JSON.parse(req.body);
         /* an observaPluginRequest looks like this:
             {
                 'plugin': 'youtube',
