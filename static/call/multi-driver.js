@@ -16,7 +16,7 @@ $("#plugin_button").click(function (event) {
         'plugin': 'youtube',
         'request': 'https://www.youtube.com/watch?v=rjQtzV9IZ0Q'
     };
-    $.post("/plugin-handler", pluginRequest, function (data) {
+    $.post("/plugin-handler", JSON.stringify(pluginRequest), function (data) {
         console.log(data);
     });
 });
