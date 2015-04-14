@@ -16,8 +16,15 @@ $("#plugin_button").click(function (event) {
         'plugin': 'youtube',
         'request': 'https://www.youtube.com/watch?v=rjQtzV9IZ0Q'
     };
-    $.post("/plugin-handler", JSON.stringify(pluginRequest), function (data) {
-        console.log(data);
+    $.ajax({
+        type: 'POST',
+        url: '/plugin-handler',
+        dataType: 'json',
+        async: false,
+        data: JSON.stringify(pluginRequest),
+        success: function() {
+            console.log("Successfully posted");
+        }
     });
 });
 
