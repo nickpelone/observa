@@ -22,8 +22,9 @@ $("#plugin_button").click(function (event) {
         dataType: 'json',
         async: false,
         data: pluginRequest,
-        success: function() {
+        success: function(data) {
             console.log("Successfully posted");
+            console.log(data);
         }
     });
 });
