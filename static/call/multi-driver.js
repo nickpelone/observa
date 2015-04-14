@@ -11,3 +11,13 @@ $("#end_button").click(function (event) {
     connection.sendCustomMessage("hello, world");
 });
 
+$("#plugin_button").click(function (event) {
+    var pluginRequest = {
+        'plugin': 'youtube',
+        'request': 'https://www.youtube.com/watch?v=rjQtzV9IZ0Q'
+    };
+    $.post("/plugin-handler", pluginRequest, function (data) {
+        console.log(data);
+    });
+});
+
