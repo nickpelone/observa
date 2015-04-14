@@ -1,8 +1,0 @@
-<script src="//cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
-<button id="openNewSessionButton">Open New Room</button>
-<script>
-var connection = new RTCMultiConnection().connect();
-document.querySelector('#openNewSessionButton').onclick = function() {
-    connection.open();
-};
-</script>
