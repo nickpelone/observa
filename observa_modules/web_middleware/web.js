@@ -46,6 +46,7 @@ exports.startWebInterface = function (port) {
                     'video': 'http://observa.nickpelone.com/plugin-depot/' + pluginVideoCount + '.mp4',
                 };
                 res.send(observaPluginResponse);
+                return;
             }
         });
     });
