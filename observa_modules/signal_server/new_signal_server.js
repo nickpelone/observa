@@ -27,7 +27,7 @@ exports.startSignalServer = function (port) {
             */
             console.log(obsReq);
 
-            var plugin = require('../observa_plugins/observa_plugin_' + obsReq.plugin + '/' + obsReq.plugin + '.js');
+            var plugin = require('../observa_plugins/observa_plugin_' + obsReq.plugin + '/' + obsReq.plugin + '.json');
 
             /* a plugin looks like this:
                 {
