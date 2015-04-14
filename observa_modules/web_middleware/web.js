@@ -18,14 +18,14 @@ exports.startWebInterface = function (port) {
     eApp.use(bodyParser.urlencoded({ extended: true }));
 
     eApp.post('/plugin-handler', function (req, res) {
-        req.body = JSON.parse(req.body);
+        var jsonObj = JSON.parse(req.body);
         /* an observaPluginRequest looks like this:
             {
                 'plugin': 'youtube',
                 'request': 'http://youtube.com/blablabla'
             }
         */
-        console.log("Observa Web Middleware: Received a plugin request: %j ",req.body);
+        console.log("Observa Web Middleware: Received a plugin request: %j ",jsonObj);
 
         var plugin = require('../observa_plugins/observa_plugin_' + req.plugin + '/' + req.plugin + '.json');
 
