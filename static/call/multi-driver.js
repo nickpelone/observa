@@ -4,7 +4,7 @@ var backupLocalVideoSrc, backupRemoteVideoSrc;
 function changeObservaVideoSource(video, target) {
     if (target === 'local') {
         /* replace the local video stream with the received video */
-        var localVideoElement = $("#local_video")[0];
+        var localVideoElement = $(".local_video")[0];
         backupLocalVideoSrc = localVideoElement.src;
         localVideoElement.src = video;
 
@@ -16,7 +16,7 @@ function changeObservaVideoSource(video, target) {
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
         /* we are changing the remote's video to the video from the message */
-        var remoteVideoElement = $("#remote_video")[0];
+        var remoteVideoElement = $(".remote_video")[0];
         backupRemoteVideoSrc = remoteVideoElement.src;
         remoteVideoElement.src = video;
     }
