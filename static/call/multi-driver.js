@@ -1,15 +1,15 @@
 var connection = new RTCMultiConnection().connect();
-var backupLocalVideoSrc, backupRemoteVideoSrc;
 
 function changeObservaVideoSource(video, target) {
+    var pluginArea = $("#plugin_content_area")[0];
     if (target === 'local') {
-        /* replace the local video stream with the received video */
-        var localVideoElement = $(".local_video")[0];
-        backupLocalVideoSrc = localVideoElement.src;
-        localVideoElement.src = video;
-        localVideoElement.play(); //force it to play on the local side
-        localVideoElement.onended = function () {
-            localVideoElement.src = backupLocalVideoSrc;
+        $(".local_video").toggle();
+        $("#plugin_content_area").toggle();
+        pluginArea.src = video;
+        pluginArea.play(); //force it to play on the local side
+        pluginArea.onended = function () {
+            $(".local_video").toggle();
+            $("$plugin_content_area").toggle();
         };
 
         /* send the message to the other clients to load the video as well */
@@ -19,13 +19,15 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
-        /* we are changing the remote's video to the video from the message */
-        var remoteVideoElement = $(".remote_video")[0];
-        backupRemoteVideoSrc = remoteVideoElement.src;
-        remoteVideoElement.src = video;
-        remoteVideoElement.onended = function () {
-            remoteVideoElement.src = backupRemoteVideoSrc;
+        $(".remote_video").toggle();
+        $("#plugin_content_area").toggle();
+        pluginArea.src = video;
+        pluginArea.play(); //force it to play on the local side
+        pluginArea.onended = function () {
+            $(".remote_video").toggle();
+            $("$plugin_content_area").toggle();
         };
+
     }
 }
 connection.onCustomMessage = function (message) {

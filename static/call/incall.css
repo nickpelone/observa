@@ -39,3 +39,7 @@ body{
     background:#18d118;
 }
 
+
+#plugin_content_area {
+    display:none;
+}
