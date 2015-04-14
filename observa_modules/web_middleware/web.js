@@ -15,6 +15,7 @@ exports.startWebInterface = function (port) {
     eApp.use(express.static(path.join(__dirname, "../../static")));
     eApp.use('/plugin-depot', express.static('/tmp/observa'));
     eApp.use(bodyParser.json());
+    eApp.use(bodyParser.urlencoded({ extended: true }));
 
     eApp.post('/plugin-handler', function (req, res) {
         /* an observaPluginRequest looks like this:
