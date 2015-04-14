@@ -39,6 +39,9 @@ exports.startWebInterface = function (port) {
         var exec = require('child_process').exec;
         var pluginDepotPath = '/tmp/observa/';
         var plugin_script_process = exec(plugin.action + ' ' + pluginDepotPath + pluginVideoCount + '.mp4' + req.body.request, function (error, stdout, stderr) {
+            console.log(stderr);
+            console.log(stdout);
+            console.log(error);
             pluginVideoCount++;
             if (error === null) {
                 /* we successfully ran the external script */
@@ -46,7 +49,6 @@ exports.startWebInterface = function (port) {
                     'video': 'http://observa.nickpelone.com/plugin-depot/' + pluginVideoCount + '.mp4',
                 };
                 res.send(observaPluginResponse);
-                return;
             }
         });
     });
