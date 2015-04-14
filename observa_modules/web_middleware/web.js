@@ -10,9 +10,11 @@ exports.startWebInterface = function (port) {
     var path = require('path');
     var eApp = express();
     var request = require('request');
+    var bodyParser = require('body-parser');
     var pluginVideoCount = 0;
     eApp.use(express.static(path.join(__dirname, "../../static")));
     eApp.use('/plugin-depot', express.static('/tmp/observa'));
+    eApp.use(bodyParser.json());
 
     eApp.post('/plugin-handler', function (req, res) {
         /* an observaPluginRequest looks like this:
