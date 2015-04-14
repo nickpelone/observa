@@ -21,7 +21,7 @@ $("#plugin_button").click(function (event) {
         url: '/plugin-handler',
         dataType: 'json',
         async: false,
-        data: JSON.stringify(pluginRequest),
+        data: pluginRequest,
         success: function() {
             console.log("Successfully posted");
         }
