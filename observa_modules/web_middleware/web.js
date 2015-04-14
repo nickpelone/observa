@@ -24,9 +24,9 @@ exports.startWebInterface = function (port) {
                 'request': 'http://youtube.com/blablabla'
             }
         */
-        console.log("Observa Web Middleware: Received a plugin request: %j ",req.body.plugin);
+        console.log("Observa Web Middleware: Received a plugin request: %j ",req.body);
 
-        var plugin = require('../observa_plugins/observa_plugin_' + req.plugin + '/' + req.plugin + '.json');
+        var plugin = require('../observa_plugins/observa_plugin_' + req.body.plugin + '/' + req.body.plugin + '.json');
 
         /* a plugin looks like this:
             {
@@ -38,7 +38,7 @@ exports.startWebInterface = function (port) {
 
         var exec = require('child_process').exec;
         var pluginDepotPath = '/tmp/observa/';
-        var plugin_script_process = exec(plugin.action + ' ' + pluginDepotPath + pluginVideoCount + '.mp4' + req.request, function (error, stdout, stderr) {
+        var plugin_script_process = exec(plugin.action + ' ' + pluginDepotPath + pluginVideoCount + '.mp4' + req.body.request, function (error, stdout, stderr) {
             pluginVideoCount++;
             if (error === null) {
                 /* we successfully ran the external script */
