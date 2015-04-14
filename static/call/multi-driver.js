@@ -1,6 +1,6 @@
 var connection = new RTCMultiConnection().connect();
 var onMessageCallbacks = {};
-var socketio = io.connect('http://observa.nickpelone.com:1234/');
+var socketio = io.connect('http://observa.nickpelone.com:1234/?channel=' + connection.channel);
 
 socketio.on('message', function(data) {
     /* Don't process our own messages */
