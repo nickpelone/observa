@@ -11,7 +11,7 @@ body{
     color:white;
 }
 
-#local_video{
+.local_video{
     width:30%;
     position:absolute;
     z-index: 0;
@@ -19,7 +19,7 @@ body{
     right:0;
 }
 
-#remote_video {
+.remote_video {
     z-index:-1;
 }
 
