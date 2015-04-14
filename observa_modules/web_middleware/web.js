@@ -38,7 +38,7 @@ exports.startWebInterface = function (port) {
 
         var exec = require('child_process').exec;
         var pluginDepotPath = '/tmp/observa/';
-        var plugin_script_process = exec(plugin.action + ' ' + pluginDepotPath + pluginVideoCount + '.mp4' + req.body.request, function (error, stdout, stderr) {
+        var plugin_script_process = exec(plugin.action + ' ' + pluginDepotPath + pluginVideoCount + '.mp4 ' + req.body.request, function (error, stdout, stderr) {
             console.log(stderr);
             console.log(stdout);
             console.log(error);
