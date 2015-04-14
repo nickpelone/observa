@@ -42,12 +42,12 @@ exports.startWebInterface = function (port) {
             console.log(stderr);
             console.log(stdout);
             console.log(error);
-            pluginVideoCount++;
             if (error === null) {
                 /* we successfully ran the external script */
                 var observaPluginResponse = {
                     'video': 'http://observa.nickpelone.com/plugin-depot/' + pluginVideoCount + '.mp4',
                 };
+                pluginVideoCount++;
                 res.send(observaPluginResponse);
             }
         });
