@@ -21,7 +21,7 @@ exports.startWebInterface = function (port) {
                 'request': 'http://youtube.com/blablabla'
             }
         */
-        console.log("Observa Web Middleware: Received a plugin request: " + req);
+        console.log("Observa Web Middleware: Received a plugin request: %j ",req);
 
         var plugin = require('../observa_plugins/observa_plugin_' + req.plugin + '/' + req.plugin + '.json');
 
