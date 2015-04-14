@@ -5,14 +5,16 @@
         <title>Observa - Share with Friends</title>
     </head>
     <body>
-        <h1>Observa Demo</h1>
-        <br>
-        <div id="local_video">
-            Observa
-            <a href="call/incall-ui.html">goto Calling page for video conference</a>
+        <div>
+            <paper-item><h1>Observa</h1></paper-item>
+            Channel Name<input type="text" id="channelName">
             <br>
-            <a href="rtcmulti.html">RTCMultiConnection feasibility test</a>
+            <button id="startCall">Start a Call in this Channel</button>
+            <button id="startBroadcast">Start a Broadcast in this Channel</button>
         </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="launcher.js"></script>
     <!--End JS-->
+
     </body>
 </html>
