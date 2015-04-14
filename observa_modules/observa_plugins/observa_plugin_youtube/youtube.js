@@ -1,0 +1,5 @@
+{
+    'plugin': 'youtube',
+    'name': 'Youtube reference plugin',
+    'action': 'youtube-dl -o'
+}
