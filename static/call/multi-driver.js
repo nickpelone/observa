@@ -8,6 +8,9 @@ function changeObservaVideoSource(video, target) {
         backupLocalVideoSrc = localVideoElement.src;
         localVideoElement.src = video;
         localVideoElement.play(); //force it to play on the local side
+        localVideoElement.onended = function () {
+            localVideoElement.src = backupLocalVideoSrc;
+        };
 
         /* send the message to the other clients to load the video as well */
         var pluginMsg = {
@@ -20,6 +23,9 @@ function changeObservaVideoSource(video, target) {
         var remoteVideoElement = $(".remote_video")[0];
         backupRemoteVideoSrc = remoteVideoElement.src;
         remoteVideoElement.src = video;
+        remoteVideoElement.onended = function () {
+            remoteVideoElement.src = backupRemoteVideoSrc;
+        };
     }
 }
 connection.onCustomMessage = function (message) {
