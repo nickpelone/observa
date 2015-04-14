@@ -7,6 +7,7 @@ function changeObservaVideoSource(video, target) {
         var localVideoElement = $(".local_video")[0];
         backupLocalVideoSrc = localVideoElement.src;
         localVideoElement.src = video;
+        localVideoElement.play(); //force it to play on the local side
 
         /* send the message to the other clients to load the video as well */
         var pluginMsg = {
