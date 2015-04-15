@@ -16,7 +16,7 @@
     };
 
     connection.onstream = function(e) {
-        document.body.appendChil(e.mediaElement);
+        $(body).append(e.mediaElement);
     };
 
     connection.connect();
