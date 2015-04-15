@@ -4,9 +4,13 @@ $("#start_button").click(function (event) {
     connection.open();
 });
 
-$("#end_button").click(function (event) {
-    connection.sendCustomMessage("hello, world");
-});
+connection.onCustomMessage = function (message) {
+    console.log("received a custom message: " + message);
+    if (message.message === 'plugin') {
+        /* received a video from another client to play */
+        changeObservaVideoSource(message.video, 'remote');
+    }
+};
 
 $("#plugin_button").click(function (event) {
     var prompted_video = prompt("Please enter a YouTube video URL.", '');
