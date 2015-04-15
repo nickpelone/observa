@@ -13,6 +13,7 @@
         session.join({
             oneway: true
         });
+        $("#start")[0].disabled = true;
     };
 
     connection.onstream = function(e) {
