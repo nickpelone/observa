@@ -9,10 +9,22 @@
 
     var sessions = {};
     connection.onNewSession = function (session) {
-        if(sessions[session.sessionid]) return;
-        sessions[session.sessionid] = session;
-        connection.join(session);
+        connection.dontCaptureUserMedia = true;
+        session.join({
+            oneway: true
+        });
     };
+
+    connection.onstream = function(e) {
+        document.body.appendChil(e.mediaElement);
+    };
+
+    connection.connect();
+
+    $("#start").click(function (event) {
+        this.disabled = true;
+        connection.open();
+    });
 
     connection.open(location.href.replace(/\/|:|#|%|\.|\[|\]/g, ''));
 })();
