@@ -38,4 +38,5 @@ function changeObservaVideoSource(video, target) {
             $("#plugin_content_area").toggle();
         };
 
+    }
 }
