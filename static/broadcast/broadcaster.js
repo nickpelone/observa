@@ -18,12 +18,12 @@
     connection.onstream = function(e) {
         $("body").append(e.mediaElement);
     };
-
-    connection.connect();
+    connection.userid = (Math.floor(Math.random() * 1000));
+    connection.connect(); //signaling
 
     $("#start").click(function (event) {
         this.disabled = true;
-        connection.open();
+        connection.open(); //open video/audio
         connection.sendCustomMessage({
             broadcast:true});
 
