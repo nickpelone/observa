@@ -7,5 +7,12 @@
         oneway: true
     };
 
-    connection.open();
+    var sessions = {};
+    connection.onNewSession = function (session) {
+        if(sessions[session.sessionid]) return;
+        sessions[session.sessionid] = session;
+        connection.join(session));
+    };
+
+    connection.open(location.href.replace(/\/|:|#|%|\.|\[|\]/g, ''));
 })();
