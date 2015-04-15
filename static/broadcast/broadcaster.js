@@ -24,7 +24,20 @@
     $("#start").click(function (event) {
         this.disabled = true;
         connection.open();
+        connection.sendCustomMessage({
+            broadcast:true});
+
     });
+
+    connection.onCustomMessage = function (message) {
+        if (message.broadcast === true) {
+            connection.askToShareParticipants();
+
+            connection.dontCaptureUserMedia = false;
+            connection.addStream({
+                audio:true,
+                video:true
+            });
 
     connection.open(location.href.replace(/\/|:|#|%|\.|\[|\]/g, ''));
 })();
