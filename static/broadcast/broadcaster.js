@@ -38,6 +38,8 @@
                 audio:true,
                 video:true
             });
+        }
+    };
 
     connection.open(location.href.replace(/\/|:|#|%|\.|\[|\]/g, ''));
 })();
