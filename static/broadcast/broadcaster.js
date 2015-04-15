@@ -34,7 +34,7 @@
     });
 
     connection.onCustomMessage = function (message) {
-        console.log("Received a custom message: " + message);
+        console.log("Received a custom message: %j", message);
         if (message.broadcast === true) {
             connection.askToShareParticipants();
 
