@@ -19,14 +19,14 @@
         $("body").append(e.mediaElement);
     };
 
-
+    connection.connect();
 
     $("#start").click(function (event) {
         this.disabled = true;
         connection.open();
         connection.sendCustomMessage({
             broadcast:true});
-        connection.connect();
+
 
     });
 
