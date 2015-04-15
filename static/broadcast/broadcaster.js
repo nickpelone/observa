@@ -16,7 +16,7 @@
     };
 
     connection.onstream = function(e) {
-        $(body).append(e.mediaElement);
+        $("body").append(e.mediaElement);
     };
 
     connection.connect();
