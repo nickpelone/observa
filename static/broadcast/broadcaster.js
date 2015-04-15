@@ -9,6 +9,7 @@
 
     var sessions = {};
     connection.onNewSession = function (session) {
+        console.log("Session found!, attempting to join");
         connection.dontCaptureUserMedia = true;
         session.join({
             oneway: true
@@ -33,6 +34,7 @@
     });
 
     connection.onCustomMessage = function (message) {
+        console.log("Received a custom message: " + message);
         if (message.broadcast === true) {
             connection.askToShareParticipants();
 
