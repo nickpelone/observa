@@ -1,5 +1,11 @@
     var connection = new RTCMultiConnection().connect();
 
+    window.onbeforeunload = function () {
+        if (pluginState != 'none') {
+            endObservaPluginEarly('local');
+        }
+    };
+
 
     $("#start_button").click(function (event) {
         connection.open();
