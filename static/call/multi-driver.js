@@ -1,8 +1,10 @@
     var connection = new RTCMultiConnection().connect();
 
     window.onbeforeunload = function () {
-        if (pluginState != 'none') {
+        if (pluginState === 'local') {
             endObservaPluginEarly('local');
+        } else if (pluginState === 'remote') {
+            endObservaPluginEarly('remote');
         }
     };
 
