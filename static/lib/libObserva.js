@@ -3,8 +3,9 @@ function changeObservaVideoSource(video, target) {
     var pluginArea = $("#plugin_content_area")[0];
     if (target === 'local') {
         $(".local_video").toggle(animationDuration);
+        $("#plugin_content_area").toggleClass('local_video'); //ensure the plugin area fades in with the appearance of a local video
         $("#plugin_content_area").toggle(animationDuration);
-        $("#plugin_content_area").toggleClass('local_video');
+
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginArea.onended = function () {
