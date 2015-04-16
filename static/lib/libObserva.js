@@ -1,13 +1,13 @@
 function changeObservaVideoSource(video, target) {
     var pluginArea = $("#plugin_content_area")[0];
     if (target === 'local') {
-        $(".local_video").hide();
-        $("#plugin_content_area").show();
+        $(".local_video").toggle();
+        $("#plugin_content_area").toggle();
         $("#plugin_content_area").toggleClass('local_video');
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginArea.onended = function () {
-            $(".local_video").show();
+            $(".local_video").toggle();
             $("#plugin_content_area").hide();
         };
 
@@ -18,23 +18,23 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
-        $(".remote_video").hide();
-        $("#plugin_content_area").show();
+        $(".remote_video").toggle();
+        $("#plugin_content_area").toggle();
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginArea.onended = function () {
-            $(".remote_video").show();
-            $("#plugin_content_area").hide();
+            $(".remote_video").toggle();
+            $("#plugin_content_area").toggle();
         };
 
     } else if (target === 'broadcast') {
-        $(".broadcast_video").hide();
-        $("#plugin_content_area").show();
+        $(".broadcast_video").toggle();
+        $("#plugin_content_area").toggle();
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginArea.onended = function () {
-            $(".broadcast_video").show();
-            $("#plugin_content_area").hide();
+            $(".broadcast_video").toggle();
+            $("#plugin_content_area").toggle();
         };
 
     }
