@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Observa - Broadcaster</title>
-    </head>
-    <body>
-        <h1>Observa - Broadcast to the World</h1>
-        <br><br>
-        <div id="video_container"></div>
-        <button id="start">Start</button>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-        <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
-        <script type="text/javascript" src="broadcaster.js"></script>
-    </body>
+<head>
+    <title>Observa - Broadcaster</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <!--Load the Polymer platform / polyfills, the DOM construction is dependent on this-->
+    <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="../bower_components/font-roboto/roboto.html">
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
+    <link rel="import" href="../bower_components/paper-item/paper-item.html">
+    <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+    <link rel="import" href="../bower_components/core-icons/core-icons.html">
+    <link rel="stylesheet" href="../lib/generic.css" type="text/css">
+    <link rel="stylesheet" href="broadcaster.css" type="text/css">
+
+</head>
+
+<body>
+    <h1>Observa - Broadcast to the World</h1>
+    <br>
+    <br>
+    <div id="video_container"></div>
+    <button id="start">Start</button>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
+    <script type="text/javascript" src="broadcaster.js"></script>
+</body>
+
 </html>
