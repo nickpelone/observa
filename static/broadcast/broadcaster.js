@@ -14,7 +14,7 @@
         session.join({
             oneway: true
         });
-        $("#start")[0].disabled = true;
+        $("#start_button")[0].disabled = true;
     };
 
     connection.onstream = function(e) {
@@ -24,7 +24,7 @@
     connection.userid = (Math.floor(Math.random() * 1000));
     connection.connect(); //signaling
 
-    $("#start").click(function (event) {
+    $("#start_button").click(function (event) {
         this.disabled = true;
         connection.open(); //open video/audio
         connection.sendCustomMessage({
