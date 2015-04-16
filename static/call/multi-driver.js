@@ -21,6 +21,7 @@
     };
     $("#plugin_button").click(function (event) {
         var prompted_video = prompt("Please enter a YouTube video URL.", '');
+        if (prompted_video === null) return; //don't break because someone canceled their plugin request
         var pluginRequest = {
             'plugin': 'youtube',
             'request': prompted_video
