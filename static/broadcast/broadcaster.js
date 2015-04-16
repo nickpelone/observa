@@ -1,6 +1,5 @@
 (function () {
     var connection = new RTCMultiConnection().connect();
-    $("#start_button")[0].disabled = true;
 
     connection.session = {
         audio: true,
@@ -24,7 +23,6 @@
     };
     connection.userid = (Math.floor(Math.random() * 1000));
     connection.connect(); //signaling
-    $("#start_button")[0].disabled = false;
 
     $("#start_button").click(function (event) {
         this.disabled = true;
