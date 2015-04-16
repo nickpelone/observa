@@ -71,6 +71,7 @@ function endObservaPluginEarly(sideOfStream) {
                 message: 'stopearly'
             };
             connection.sendCustomMessage(endPluginRequest);
+            pluginState = 'none';
         }
     } else if (sideOfStream === 'remote') {
         /*
@@ -83,6 +84,7 @@ function endObservaPluginEarly(sideOfStream) {
             pluginArea.src = "";
             $("#plugin_content_area").toggle(animationDuration);
             $(".remote_video").toggle(animationDuration);
+            pluginState = 'none';
         }
     }
 }
