@@ -1,7 +1,12 @@
 var connection = new RTCMultiConnection().connect();
 
+
 $("#start_button").click(function (event) {
     connection.open();
+});
+
+$("#end_button").click(function (event) {
+   endObservaPluginEarly('local');
 });
 
 connection.onCustomMessage = function (message) {
@@ -9,6 +14,9 @@ connection.onCustomMessage = function (message) {
     if (message.message === 'plugin') {
         /* received a video from another client to play */
         changeObservaVideoSource(message.video, 'remote');
+    } else if (message.message === 'stopearly') {
+        // the remote plugin is hanging up - clean up and restore the normal remote video!
+        endObservaPluginEarly('remote');
     }
 };
 
