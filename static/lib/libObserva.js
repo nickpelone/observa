@@ -28,13 +28,15 @@ function changeObservaVideoSource(video, target) {
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
         $(".remote_video").toggle(animationDuration);
+        $("#plugin_content_area").toggleClass('remote_video'); //constrain the plugin content to remote_video rules
         $("#plugin_content_area").toggle(animationDuration);
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'remote';
         pluginArea.onended = function () {
-            $(".remote_video").toggle(animationDuration);
             $("#plugin_content_area").toggle(animationDuration);
+            $("#plugin_content_area").toggleClass('remote_video'); //remove plugin content from the remote_video class before revealing remote_video
+            $(".remote_video").toggle(animationDuration);
             pluginState = 'none';
         };
 
