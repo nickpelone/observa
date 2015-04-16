@@ -19,7 +19,7 @@
 
     connection.onstream = function(e) {
         e.mediaElement.className = e.mediaElement.className + 'broadcast_video';
-        $("body").append(e.mediaElement);
+        $("#video_container").append(e.mediaElement);
     };
     connection.userid = (Math.floor(Math.random() * 1000));
     connection.connect(); //signaling
