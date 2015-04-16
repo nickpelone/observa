@@ -2,3 +2,9 @@ body{
     background: #424242;
     font-family: 'RobotoDraft', sans-serif;
 }
+
+#header {
+    color:white;
+    background:#3F51B5;
+    text-align:center;
+}
