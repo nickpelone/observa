@@ -1,4 +1,3 @@
-(function () {
     var connection = new RTCMultiConnection().connect();
 
 
@@ -20,7 +19,6 @@
             endObservaPluginEarly('remote');
         }
     };
-
     $("#plugin_button").click(function (event) {
         var prompted_video = prompt("Please enter a YouTube video URL.", '');
         var pluginRequest = {
@@ -40,4 +38,3 @@
             }
         });
     });
-})();
