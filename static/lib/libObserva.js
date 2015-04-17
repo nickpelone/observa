@@ -52,8 +52,14 @@ function changeObservaVideoSource(video, target) {
         pluginState = 'broadcast';
         pluginArea.onended = function () {
             $(".plugin_content_area").hide(animationDuration);
+            $(".plugin_content_area").remove();
             $(".broadcast_video").show(animationDuration);
         };
+        var pluginMsg = {
+            'message': 'plugin',
+            'video': video
+        };
+        connection.sendCustomMessage(pluginMsg);
     }
 }
 
