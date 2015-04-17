@@ -55,11 +55,13 @@ function changeObservaVideoSource(video, target) {
             $(".plugin_content_area").remove();
             $(".broadcast_video").show(animationDuration);
         };
-        var pluginMsg = {
-            'message': 'plugin',
-            'video': video
-        };
-        connection.sendCustomMessage(pluginMsg);
+        if (pluginState === 'none') {
+            var pluginMsg = {
+                'message': 'plugin',
+                'video': video
+            };
+            connection.sendCustomMessage(pluginMsg);
+        }
     }
 }
 
