@@ -35,6 +35,7 @@ $("#start_button").click(function (event) {
 });
 
 $("#plugin_button").click(function (event) {
+    connection.sendCustomMessage("hello???");
     var prompted_video = prompt("Please enter a YouTube video URL.", '');
     if (prompted_video === null) return; //don't break because someone canceled their plugin request
     var pluginRequest = {
