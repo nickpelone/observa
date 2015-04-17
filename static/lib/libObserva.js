@@ -2,7 +2,6 @@ var animationDuration = 800;
 var pluginState = 'none';
 
 function changeObservaVideoSource(video, target) {
-    var pluginArea = $(".plugin_content_area")[0];
     $("#video_container").prepend("<video class='plugin_content_area'></video>");
     var pluginArea = $(".plugin_content_area")[0];
     if (target === 'local') {
