@@ -43,6 +43,7 @@
             success: function (data) {
                 console.log("Successfully posted");
                 console.log(data);
+                if (data.error) return;
                 changeObservaVideoSource(data.video, 'local');
             }
         });

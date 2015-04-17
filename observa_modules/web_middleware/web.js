@@ -49,6 +49,11 @@ exports.startWebInterface = function (port) {
                 };
                 pluginVideoCount++;
                 res.send(observaPluginResponse);
+            } else {
+                var errMsg = {error: error,
+                              stderr: stderr
+                             };
+                res.send(errMsg);
             }
         });
     });
