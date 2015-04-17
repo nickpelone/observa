@@ -63,10 +63,10 @@ function endObservaPluginEarly(sideOfStream) {
         if (pluginState === 'local') {
             pluginArea.pause();
             pluginArea.src = "";
-            $("#plugin_content_area").toggle(animationDuration);
+            $("#plugin_content_area").hide(animationDuration);
             $("#plugin_content_area").toggleClass('local_video');
             //plugin content has been hidden and removed from the local_video class
-            $(".local_video").toggle(animationDuration);
+            $(".local_video").show(animationDuration);
 
             //We now need to tell the remote client that it's time to end the video
             var endPluginRequest = {
@@ -84,8 +84,8 @@ function endObservaPluginEarly(sideOfStream) {
         if (pluginState === 'remote') {
             pluginArea.pause();
             pluginArea.src = "";
-            $("#plugin_content_area").toggle(animationDuration);
-            $(".remote_video").toggle(animationDuration);
+            $("#plugin_content_area").hide(animationDuration);
+            $(".remote_video").show(animationDuration);
             pluginState = 'none';
         }
     }
