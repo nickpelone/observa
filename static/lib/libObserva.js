@@ -5,17 +5,17 @@ var pluginArea = $("#plugin_content_area")[0];
 function changeObservaVideoSource(video, target) {
     var pluginArea = $("#plugin_content_area")[0];
     if (target === 'local') {
-        $(".local_video").toggle(animationDuration);
+        $(".local_video").hide(animationDuration);
         $("#plugin_content_area").toggleClass('local_video'); //ensure the plugin area fades in with the appearance of a local video
-        $("#plugin_content_area").toggle(animationDuration);
+        $("#plugin_content_area").show(animationDuration);
 
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'local';
         pluginArea.onended = function () {
             $("#plugin_content_area").toggleClass('local_video'); //ensure we remove local video properties from the plugin area
-            $("#plugin_content_area").toggle(animationDuration);
-            $(".local_video").toggle(animationDuration);
+            $("#plugin_content_area").hide(animationDuration);
+            $(".local_video").show(animationDuration);
             pluginState = 'none';
 
         };
@@ -27,28 +27,28 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
-        $(".remote_video").toggle(animationDuration);
+        $(".remote_video").hide(animationDuration);
         $("#plugin_content_area").toggleClass('remote_video'); //constrain the plugin content to remote_video rules
-        $("#plugin_content_area").toggle(animationDuration);
+        $("#plugin_content_area").show(animationDuration);
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'remote';
         pluginArea.onended = function () {
-            $("#plugin_content_area").toggle(animationDuration);
+            $("#plugin_content_area").hide(animationDuration);
             $("#plugin_content_area").toggleClass('remote_video'); //remove plugin content from the remote_video class before revealing remote_video
-            $(".remote_video").toggle(animationDuration);
+            $(".remote_video").show(animationDuration);
             pluginState = 'none';
         };
 
     } else if (target === 'broadcast') {
-        $(".broadcast_video").toggle(animationDuration);
-        $("#plugin_content_area").toggle(animationDuration);
+        $(".broadcast_video").hide(animationDuration);
+        $("#plugin_content_area").show(animationDuration);
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'broadcast_remote';
         pluginArea.onended = function () {
-            $(".broadcast_video").toggle(animationDuration);
-            $("#plugin_content_area").toggle(animationDuration);
+            $("#plugin_content_area").hide(animationDuration);
+            $(".broadcast_video").show(animationDuration);
         };
     }
 }
