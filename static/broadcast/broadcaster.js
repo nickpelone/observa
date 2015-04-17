@@ -1,4 +1,4 @@
-(function () {
+
         var connection = new RTCMultiConnection().connect();
 
         connection.session = {
@@ -76,4 +76,4 @@
                 endObservaPluginEarly('broadcast');
             }
         };
-})();
+
