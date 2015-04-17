@@ -44,11 +44,12 @@ function changeObservaVideoSource(video, target) {
         };
 
     } else if (target === 'broadcast') {
+        $("#video_container").prepend("<video class='plugin_content_area'></video>");
         $(".broadcast_video").hide(animationDuration);
         $(".plugin_content_area").show(animationDuration);
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
-        pluginState = 'broadcast_remote';
+        pluginState = 'broadcast';
         pluginArea.onended = function () {
             $(".plugin_content_area").hide(animationDuration);
             $(".broadcast_video").show(animationDuration);
@@ -95,5 +96,15 @@ function endObservaPluginEarly(sideOfStream) {
             $(".remote_video").show(animationDuration);
             pluginState = 'none';
         }
+    } else if (sideOfStream === 'broadcast') {
+        /*
+         * Remove the plugin content area, show the broadcast video again
+         */
+
+        $(".plugin_content_area").hide(animationDuration);
+        $(".plugin_content_area").css("display", "none");
+        $(".plugin_content_area").remove();
+        $(".broadcast_video").show(animationDuration);
+        pluginState = 'none';
     }
 }
