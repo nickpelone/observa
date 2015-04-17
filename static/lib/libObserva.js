@@ -54,6 +54,7 @@ function changeObservaVideoSource(video, target) {
             $(".plugin_content_area").hide(animationDuration);
             $(".plugin_content_area").remove();
             $(".broadcast_video").show(animationDuration);
+            pluginState = 'none'
         };
         if (pluginState === 'none') {
             var pluginMsg = {
