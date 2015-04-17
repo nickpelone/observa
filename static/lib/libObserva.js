@@ -85,6 +85,7 @@ function endObservaPluginEarly(sideOfStream) {
             pluginArea.pause();
             pluginArea.src = "";
             $("#plugin_content_area").hide(animationDuration);
+            $("#plugin_content_area").css({display: none});
             $(".remote_video").show(animationDuration);
             pluginState = 'none';
         }
