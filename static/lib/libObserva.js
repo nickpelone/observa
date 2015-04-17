@@ -3,6 +3,7 @@ var pluginState = 'none';
 var pluginArea = $("#plugin_content_area")[0];
 
 function changeObservaVideoSource(video, target) {
+    $("#video_container").prepend("<video id='plugin_content_area'></video>");
     var pluginArea = $("#plugin_content_area")[0];
     if (target === 'local') {
         $(".local_video").hide(animationDuration);
@@ -17,6 +18,7 @@ function changeObservaVideoSource(video, target) {
             $("#plugin_content_area").hide(animationDuration);
             $(".local_video").show(animationDuration);
             pluginState = 'none';
+            $("#plugin_content_area").remove();
 
         };
 
@@ -27,6 +29,7 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
+        $("#video_container").prepend("<video id='plugin_content_area'></video>");
         $(".remote_video").hide(animationDuration);
         $("#plugin_content_area").toggleClass('remote_video'); //constrain the plugin content to remote_video rules
         $("#plugin_content_area").show(animationDuration);
@@ -38,6 +41,7 @@ function changeObservaVideoSource(video, target) {
             $("#plugin_content_area").hide(animationDuration);
             $(".remote_video").show(animationDuration);
             pluginState = 'none';
+            $("#plugin_content_area").remove();
         };
 
     } else if (target === 'broadcast') {
