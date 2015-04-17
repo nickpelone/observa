@@ -69,6 +69,7 @@ function endObservaPluginEarly(sideOfStream) {
             pluginArea.src = "";
             $("#plugin_content_area").hide(animationDuration);
             $("#plugin_content_area").toggleClass('local_video');
+            $("#plugin_content_area").remove();
             //plugin content has been hidden and removed from the local_video class
             $(".local_video").show(animationDuration);
 
@@ -90,6 +91,7 @@ function endObservaPluginEarly(sideOfStream) {
             pluginArea.src = "";
             $("#plugin_content_area").hide(animationDuration);
             $("#plugin_content_area").css("display", "none");
+            $("#plugin_content_area").remove();
             $(".remote_video").show(animationDuration);
             pluginState = 'none';
         }
