@@ -25,6 +25,7 @@
         } else if (message.message === 'stopearly') {
             // the remote plugin is hanging up - clean up and restore the normal remote video!
             endObservaPluginEarly('remote');
+            $("#plugin_content_area").css("display", "none");
         }
     };
     $("#plugin_button").click(function (event) {
