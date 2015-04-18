@@ -32,12 +32,14 @@ function changeObservaVideoSource(video, target) {
         $(".remote_video").hide(animationDuration);
         $(".plugin_content_area").toggleClass('remote_video'); //constrain the plugin content to remote_video rules
         $(".plugin_content_area").show(animationDuration);
+        $(".local_video").css("width", "5%");
         pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'remote';
         pluginArea.onended = function () {
             $(".plugin_content_area").toggleClass('remote_video'); //remove plugin content from the remote_video class before revealing remote_video
             $(".plugin_content_area").hide(animationDuration);
+            $(".local_video").css("width", "30%");
             $(".remote_video").show(animationDuration);
             pluginState = 'none';
             $(".plugin_content_area").remove();
