@@ -16,6 +16,9 @@ $(document).ready(function () {
 
     $("#start_button").click(function (event) {
         connection.open();
+        $("#plugin_button")[0].disabled = false;
+        $("#end_button")[0].disabled = false;
+        $("#start_button")[0].disabled = true;
     });
 
     $("#end_button").click(function (event) {
