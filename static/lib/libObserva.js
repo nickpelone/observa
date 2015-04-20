@@ -70,7 +70,7 @@ function changeObservaVideoSource(video, target) {
     } else if (target === 'broadcast') {
         $(broadcast_video).hide(animationDuration);
         $(plugin_content_area).show(animationDuration);
-        pluginArea.sr = video;
+        pluginArea.src = video;
         pluginArea.play(); //force it to play on the local side
         pluginState = 'broadcast';
         pluginArea.onended = function () {
