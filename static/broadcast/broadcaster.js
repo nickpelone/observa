@@ -1,5 +1,6 @@
+var connection = new RTCMultiConnection().connect();
 $(document).ready(function () {
-    var connection = new RTCMultiConnection().connect();
+
 
     connection.session = {
         audio: true,
