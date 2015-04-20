@@ -6,6 +6,9 @@ connection.session = {
     oneway: true
 };
 
+$("#plugin_button")[0].disabled = true;
+$("#end_button")[0].disabled = true;
+
 var sessions = {};
 connection.onNewSession = function (session) {
     console.log("Session found!, attempting to join");
@@ -31,6 +34,8 @@ $("#start_button").click(function (event) {
     connection.sendCustomMessage({
         broadcast: true
     });
+    $("#plugin_button")[0].disabled = false;
+    $("#end_button")[0].disabled = false;
 
 
 });
