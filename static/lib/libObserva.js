@@ -79,13 +79,11 @@ function changeObservaVideoSource(video, target) {
             $(broadcast_video).show(animationDuration);
             pluginState = 'none';
         };
-        if (pluginState === 'none') {
-            pluginMsg = {
-                'message': 'plugin',
-                'video': video
-            };
-            connection.sendCustomMessage(pluginMsg);
-        }
+        pluginMsg = {
+            'message': 'plugin',
+            'video': video
+        };
+        connection.sendCustomMessage(pluginMsg);
     }
 }
 
