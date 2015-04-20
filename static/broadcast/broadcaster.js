@@ -1,19 +1,38 @@
 var connection = new RTCMultiConnection().connect();
 $(document).ready(function () {
+    /* Set the inital state of the user interface */
+    $("#plugin_button")[0].disabled = true;
+    $("#end_button")[0].disabled = true;
 
+    /*
+     * RTCMultiConnection Overrides
+     */
 
+    /* setup the conditions for this session, namely, the one-way property */
     connection.session = {
         audio: true,
         video: true,
         oneway: true
     };
 
-    $("#plugin_button")[0].disabled = true;
-    $("#end_button")[0].disabled = true;
+    /* set a random userid */
+    connection.userid = (Math.floor(Math.random() * 1000));
+    /* open the connection to the signaling server */
+    connection.connect(); //signaling
 
-    var sessions = {};
+
+    /* override onstream to insert extra classes on the video element before its inserted to the DOM */
+    connection.onstream = function (e) {
+        e.mediaElement.className = e.mediaElement.className + ' broadcast_video';
+        $("#video_container").append(e.mediaElement);
+    };
+
+
+
+    var sessions = {}; //holdover from example RTCMultiConnection code, this is likely no longer needed
+    /* override onNewSession to join into sessions in one-way mode */
     connection.onNewSession = function (session) {
-        console.log("Session found!, attempting to join");
+        /* set up the conditions for a one-way viewing of the video stream */
         connection.dontCaptureUserMedia = true;
         session.join({
             oneway: true
@@ -23,12 +42,33 @@ $(document).ready(function () {
         $("#end_button")[0].disabled = true;
     };
 
-    connection.onstream = function (e) {
-        e.mediaElement.className = e.mediaElement.className + ' broadcast_video';
-        $("#video_container").append(e.mediaElement);
+    /* override onCustomMessage to implement plugin functionality and receive broadcast notifications */
+     connection.onCustomMessage = function (message) {
+        console.log("Received a custom message: %j", message);
+        if (message.broadcast === true) {
+
+            connection.dontCaptureUserMedia = false;
+            connection.addStream({
+                audio: true,
+                video: true
+            });
+
+        } else if (message.message === 'plugin') {
+            /* received a video from another client to play */
+            /* check to see if a video is already playing */
+            if ($(".plugin_content_area").size() === 0) {
+                changeObservaVideoSource(message.video, 'broadcast');
+            }
+        } else if (message.message === 'stopearly') {
+            // the remote plugin is hanging up - clean up and restore the normal remote video!
+            pluginState = 'none';
+            endObservaPluginEarly('broadcast');
+        }
     };
-    connection.userid = (Math.floor(Math.random() * 1000));
-    connection.connect(); //signaling
+
+    /*
+     * Click handlers
+     */
 
     $("#start_button").click(function (event) {
         this.disabled = true;
@@ -38,8 +78,6 @@ $(document).ready(function () {
         });
         $("#plugin_button")[0].disabled = false;
         $("#end_button")[0].disabled = false;
-
-
     });
 
     $("#plugin_button").click(function (event) {
@@ -69,27 +107,4 @@ $(document).ready(function () {
         endObservaPluginEarly('broadcast');
     });
 
-    connection.onCustomMessage = function (message) {
-        console.log("Received a custom message: %j", message);
-        if (message.broadcast === true) {
-            //connection.askToShareParticipants();
-
-            connection.dontCaptureUserMedia = false;
-            connection.addStream({
-                audio: true,
-                video: true
-            });
-            console.log("Opening a received broadcast?");
-        } else if (message.message === 'plugin') {
-            /* received a video from another client to play */
-            /* check to see if a video is already playing */
-            if ($(".plugin_content_area").size() === 0) {
-                changeObservaVideoSource(message.video, 'broadcast');
-            }
-        } else if (message.message === 'stopearly') {
-            // the remote plugin is hanging up - clean up and restore the normal remote video!
-            pluginState = 'none';
-            endObservaPluginEarly('broadcast');
-        }
-    };
 });
