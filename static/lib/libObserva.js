@@ -1,11 +1,22 @@
+/*
+ * libObserva global variables - available to all who link libObserva.js
+ */
 var animationDuration = 800;
 var pluginState = 'none';
+/* variables in snake_case are String constants for reuse in selectors*/
 var local_video = '.local_video';
 var remote_video = '.remote_video';
 var plugin_content_area = '.plugin_content_area';
 var broadcast_video = '.broadcast_video';
 var plugin_content_element = "<video class='plugin_content_area'></video>";
 
+/*
+ * This function handles the actual playing of a piece of plugin content
+ * and setting up its onended functions. Note that each onended destroys the plugin_content_area, so that a fresh one
+ * can be made each time a plugin is called.
+ * It takes in the video to add, the targetElement to add it to, and the pluginClass
+ * that represents if it's a local video, a remote video, or a broadcast video
+ */
 function setupObservaPlugin(video, targetElement, pluginClass) {
     targetElement.src = video;
     targetElement.play(); //begin plugin playback
@@ -43,9 +54,15 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
 }
 
 
-
+/*
+ * This function handles a received piece of plugin content, adding it to the user interface
+ * and signaling others to play it as well, if necessary.
+ * This function is the one you would call from a client js file trying to implement the Observa client.
+ * (See its use in static/call/caller.js and static/broadcast/broadcaster.js)
+ */
 function changeObservaVideoSource(video, target) {
     var pluginMsg;
+    /* Always add a plugin content element, regardless of the end of the experience we're on. */
     $("#video_container").prepend(plugin_content_element);
     var pluginArea = $(plugin_content_area)[0];
     if (target === 'local') {
@@ -90,6 +107,12 @@ function changeObservaVideoSource(video, target) {
     }
 }
 
+/*
+ * This function, given the side of the stream it is on, cleans up plugin content playback
+ * and restores the user interface to the normal video call or video broadcast state.
+ * This is the function you would call from a client js file trying to implement the Observa client.
+ * (See static/call/caller.js and static/broadcast/broadcaster.js for example use)
+ */
 function endObservaPluginEarly(sideOfStream) {
     var pluginArea = $(plugin_content_area)[0];
     var endPluginRequest;
