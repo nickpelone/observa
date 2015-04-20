@@ -39,12 +39,6 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
             $(broadcast_video).show(animationDuration);
             pluginState = 'none';
         };
-        pluginMsg = {
-            'userid': connection.userid,
-            'message': 'plugin',
-            'video': video
-        };
-        connection.sendCustomMessage(pluginMsg);
     }
 }
 
@@ -86,16 +80,9 @@ function changeObservaVideoSource(video, target) {
     } else if (target === 'broadcast') {
         $(broadcast_video).hide(animationDuration);
         $(plugin_content_area).show(animationDuration);
-        pluginArea.src = video;
-        pluginArea.play(); //force it to play on the local side
-        pluginState = 'broadcast';
-        pluginArea.onended = function () {
-            $(plugin_content_area).hide(animationDuration);
-            $(plugin_content_area).remove();
-            $(broadcast_video).show(animationDuration);
-            pluginState = 'none';
-        };
+        setupObservaPlugin(video, pluginArea, broadcast_video);
         pluginMsg = {
+            'userid': connection.userid,
             'message': 'plugin',
             'video': video
         };
