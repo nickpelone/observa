@@ -7,7 +7,11 @@ $(document).ready(function () {
 
     /* FIX for mobile where local video appears perpetually paused after it is added */
     setInterval(function () {
-        $(".local_video")[0].play();
+        try {
+            $(".local_video")[0].play();
+            $(".remote_video")[0].play();
+        } catch (error) {
+        }
     }, 1000);
 
 
