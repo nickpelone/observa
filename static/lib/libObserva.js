@@ -22,7 +22,7 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
         pluginState = 'remote';
         targetElement.onended = function (animationDuration) {
             $(plugin_content_area).toggleClass('remote_video'); //remove plugin content from the remote_video class before revealing remote_video
-            $(plugin_content_area).hide(animationDuroation);
+            $(plugin_content_area).hide(animationDuration);
             $(local_video).css("width", "30%");
             $(remote_video).show(animationDuration);
             pluginState = 'none';
