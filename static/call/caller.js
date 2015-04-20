@@ -1,6 +1,10 @@
 var connection = new RTCMultiConnection().connect();
 
 $(document).ready(function () {
+    /* Set the default states of the buttons */
+    $("#plugin_button")[0].disabled = true;
+    $("#end_button")[0].disabled = true;
+
 
     window.onbeforeunload = function () {
         if (pluginState === 'local') {
@@ -17,6 +21,13 @@ $(document).ready(function () {
     $("#end_button").click(function (event) {
         endObservaPluginEarly('local');
     });
+
+    connection.onNewSession = function (session) {
+        $("#plugin_button")[0].disabled = false;
+        $("#end_button")[0].disabled = false;
+        $("#start_button")[0].disabled = true;
+    };
+
 
     connection.onCustomMessage = function (message) {
         console.log("received a custom message: " + message);
