@@ -11,6 +11,7 @@ $(document).ready(function () {
             $(".local_video")[0].play();
             $(".remote_video")[0].play();
         } catch (error) {
+            console.log("video elements don't exist yet, skipping play()");
         }
     }, 1000);
 
