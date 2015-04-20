@@ -5,6 +5,11 @@ $(document).ready(function () {
     $("#plugin_button")[0].disabled = true;
     $("#end_button")[0].disabled = true;
 
+    /* FIX for mobile where local video appears perpetually paused after it is added */
+    var mobileFixInterval = setInterval(function () {
+        $(".local_video")[0].play();
+    }, 1000);
+
 
     window.onbeforeunload = function () {
         if (pluginState === 'local') {
