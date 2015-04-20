@@ -92,6 +92,7 @@ function changeObservaVideoSource(video, target) {
 
 function endObservaPluginEarly(sideOfStream) {
     var pluginArea = $(plugin_content_area)[0];
+    var endPluginRequest;
     if (sideOfStream === 'local') {
         /*
          * We are ending the stream on the local side.
@@ -108,7 +109,7 @@ function endObservaPluginEarly(sideOfStream) {
             $(local_video).show(animationDuration);
 
             //We now need to tell the remote client that it's time to end the video
-            var endPluginRequest = {
+            endPluginRequest = {
                 message: 'stopearly'
             };
             connection.sendCustomMessage(endPluginRequest);
@@ -139,6 +140,10 @@ function endObservaPluginEarly(sideOfStream) {
         $(plugin_content_area).css("display", "none");
         $(plugin_content_area).remove();
         $(broadcast_video).show(animationDuration);
+        endPluginRequest = {
+                message: 'stopearly'
+            };
+        connection.sendCustomMessage(endPluginRequest);
         pluginState = 'none';
     }
 }
