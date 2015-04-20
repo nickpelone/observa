@@ -4,13 +4,13 @@
   "description": "WebSocket Server/Client to watch videos in sync",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "node app.js"
   },
   "keywords": [
     "video"
   ],
   "author": "Nick Pelone <npelone@unca.edu>",
-  "license": "?",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.12.2",
     "express": "^4.12.2",
