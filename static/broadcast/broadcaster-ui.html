@@ -12,33 +12,35 @@
     <link rel="import" href="../bower_components/paper-item/paper-item.html">
     <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
     <link rel="import" href="../bower_components/core-icons/core-icons.html">
-    <link rel="stylesheet" href="../lib/generic.css" type="text/css">
-    <link rel="stylesheet" href="broadcaster.css" type="text/css">
+    <link rel="import" href="../bower_components/core-icons/av-icons.html">
+    <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">
+    <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html">
+    <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+    <link rel="stylesheet" type="text/css" href="../lib/generic.css">
+    <link rel="stylesheet" type="text/css" href="broadcaster.css">
 
 </head>
 
-<body>
-    <div id="header">
-        <paper-item>
-            <h1>Observa - Broadcast to the World</h1>
-        </paper-item>
-    </div>
+<body unresolved fullbleed layout vertical>
+    <core-header-panel flex>
+        <core-toolbar id="header" mode="waterfall-tall" shadow="true">
+            <a href="/"><core-icon-button icon="av:videocam"></core-icon-button></a>Observa - Video Broadcast
+        </core-toolbar>
+        <center>
+            <br>
+            <div id="video_container"></div>
+            <div id="broadcast_controls">
+                <paper-fab icon="close" id="end_button" title="Stop Plugin Content"></paper-fab>
+                <paper-fab id="start_button" icon="settings-input-antenna" title="Start Broadcasting"></paper-fab>
+                <paper-fab id="plugin_button" icon="add" title="Change your video source"></paper-fab>
+            </div>
+        </center>
 
-    <br>
-    <br>
-    <center>
-        <div id="video_container"></div>
-        <div id="broadcast_controls">
-            <paper-fab icon="close" id="end_button" title="Stop Plugin Content"></paper-fab>
-            <paper-fab id="start_button" icon="settings-input-antenna" title="Start Broadcasting"></paper-fab>
-            <paper-fab id="plugin_button" icon="add" title="Change your video source"></paper-fab>
-        </div>
-    </center>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
-    <script type="text/javascript" src="../lib/libObserva.js"></script>
-    <script type="text/javascript" src="broadcaster.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
+        <script type="text/javascript" src="../lib/libObserva.js"></script>
+        <script type="text/javascript" src="broadcaster.js"></script>
+    </core-header-panel>
 </body>
 
 </html>

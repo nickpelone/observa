@@ -21,27 +21,28 @@
 
 <body unresolved fullbleed layout vertical>
     <core-header-panel flex>
-    
-    
-    <div class="container">
-        <core-toolbar id="header" mode="waterfall-tall" shadow="true">    
-            <a href="/"><core-icon-button icon="question-answer"></core-icon-button></a>
+        <core-toolbar id="header" mode="waterfall-tall" shadow="true">
+            <a href="/">
+                <core-icon-button icon="question-answer"></core-icon-button>
+            </a>
             Observa - Call a Friend
         </core-toolbar>
+        <br>
         <center>
-            <div id="video_container">
-            </div>
-            <div id="call_controls">
-                <paper-fab icon="close" id="end_button" title="Stop Plugin Content"></paper-fab>
-                <paper-fab icon="add" id="plugin_button" title="Change your video source"></paper-fab>
-                <paper-fab icon="settings-input-antenna" id="start_button" title="Start Call"></paper-fab>
+            <div class="container">
+                <div id="video_container">
+                </div>
+                <div id="call_controls">
+                    <paper-fab icon="close" id="end_button" title="Stop Plugin Content"></paper-fab>
+                    <paper-fab icon="add" id="plugin_button" title="Change your video source"></paper-fab>
+                    <paper-fab icon="settings-input-antenna" id="start_button" title="Start Call"></paper-fab>
+                </div>
             </div>
         </center>
-    </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
-    <script type="text/javascript" src="../lib/libObserva.js"></script>
-    <script type="text/javascript" src="caller.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="../lib/RTCMultiConnection.js"></script>
+        <script type="text/javascript" src="../lib/libObserva.js"></script>
+        <script type="text/javascript" src="caller.js"></script>
     </core-header-panel>
 </body>
 
