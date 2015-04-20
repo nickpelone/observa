@@ -18,7 +18,7 @@ connection.onNewSession = function (session) {
 };
 
 connection.onstream = function (e) {
-    e.mediaElement.className = e.mediaElement.className + 'broadcast_video';
+    e.mediaElement.className = e.mediaElement.className + ' broadcast_video';
     $("#video_container").append(e.mediaElement);
 };
 connection.userid = (Math.floor(Math.random() * 1000));
