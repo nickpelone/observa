@@ -29,6 +29,22 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
             pluginState = 'none';
             $(plugin_content_area).remove();
         };
+    } else if (pluginClass === broadcast_video) {
+        targetElement.src = video;
+        targetElement.play(); //force it to play on the local side
+        pluginState = 'broadcast';
+        targetElement.onended = function (animationDuration) {
+            $(plugin_content_area).hide(animationDuration);
+            $(plugin_content_area).remove();
+            $(broadcast_video).show(animationDuration);
+            pluginState = 'none';
+        };
+        pluginMsg = {
+            'userid': connection.userid,
+            'message': 'plugin',
+            'video': video
+        };
+        connection.sendCustomMessage(pluginMsg);
     }
 }
 

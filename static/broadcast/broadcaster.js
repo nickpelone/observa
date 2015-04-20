@@ -70,6 +70,7 @@ connection.onCustomMessage = function (message) {
         console.log("Opening a received broadcast?");
     } else if (message.message === 'plugin') {
         /* received a video from another client to play */
+        if (message.userid === connection.userid) return; //Don't duplicate videos on the sender's side
         changeObservaVideoSource(message.video, 'broadcast');
     } else if (message.message === 'stopearly') {
         // the remote plugin is hanging up - clean up and restore the normal remote video!
