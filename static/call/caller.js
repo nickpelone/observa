@@ -26,6 +26,7 @@ $(document).ready(function () {
         $("#plugin_button")[0].disabled = false;
         $("#end_button")[0].disabled = false;
         $("#start_button")[0].disabled = true;
+        session.join();
     };
 
 
