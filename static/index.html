@@ -11,6 +11,10 @@
     <link rel="import" href="bower_components/paper-item/paper-item.html">
     <link rel="import" href="bower_components/paper-fab/paper-fab.html">
     <link rel="import" href="bower_components/core-icons/core-icons.html">
+    <link rel="import" href="bower_components/core-icons/av-icons.html">
+    <link rel="import" href="bower_components/core-icon/core-icon.html">
+    <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+    <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="stylesheet" type="text/css" href="lib/generic.css">
     <title>Observa - Share with Friends</title>
 </head>
@@ -23,11 +27,18 @@
                     <h1>Observa</h1>
                 </paper-item>
             </div>
-            Channel Name:
-            <input type="text" id="channelName">
+            <paper-item>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <paper-input id="channelName" label="Channel name"></paper-input>
+            </paper-item>
             <br><br><br>
-            <paper-button raised id="startCall">Join a Call</paper-button>
-            <paper-button raised id="startBroadcast">Join a Broadcast</paper-button>
+            <paper-button raised id="startCall">
+                <core-icon icon="question-answer"></core-icon>
+                Join a Call
+            </paper-button>
+            <paper-button raised id="startBroadcast">
+                <core-icon icon="av:videocam"></core-icon>
+                Join a Broadcast
+            </paper-button>
         </div>
         </center>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
