@@ -15,6 +15,7 @@ connection.onNewSession = function (session) {
     });
     $("#start_button")[0].disabled = true;
     $("#plugin_button")[0].disabled = true;
+    $("#end_button")[0].disabled = true;
 };
 
 connection.onstream = function (e) {
@@ -55,6 +56,10 @@ $("#plugin_button").click(function (event) {
             changeObservaVideoSource(data.video, 'broadcast');
         }
     });
+});
+
+$("#end_button").click(function (event) {
+    endObservaPluginEarly('broadcast');
 });
 
 connection.onCustomMessage = function (message) {
