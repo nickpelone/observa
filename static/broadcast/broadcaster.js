@@ -71,7 +71,7 @@ connection.onCustomMessage = function (message) {
     } else if (message.message === 'plugin') {
         /* received a video from another client to play */
         /* check to see if a video is already playing */
-        if ($(".plugin_content_area").size === 0) {
+        if ($(".plugin_content_area").size() === 0) {
             changeObservaVideoSource(message.video, 'broadcast');
         }
     } else if (message.message === 'stopearly') {
