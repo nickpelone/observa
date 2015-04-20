@@ -140,10 +140,13 @@ function endObservaPluginEarly(sideOfStream) {
         $(plugin_content_area).css("display", "none");
         $(plugin_content_area).remove();
         $(broadcast_video).show(animationDuration);
-        endPluginRequest = {
-                message: 'stopearly'
-            };
-        connection.sendCustomMessage(endPluginRequest);
-        pluginState = 'none';
+        if (pluginState != 'none') {
+            /* the pluginState is set to none when the broadcast client receives a stopearly message or when we send a stopearly message.*/
+            endPluginRequest = {
+                    message: 'stopearly'
+                };
+            connection.sendCustomMessage(endPluginRequest);
+            pluginState = 'none';
+        }
     }
 }
