@@ -56,11 +56,15 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
+        /* Hide the remote stream, its being replaced with a plugin video */
         $(remote_video).hide(animationDuration);
-        $(plugin_content_area).toggleClass('remote_video'); //constrain the plugin content to remote_video rules
-        $(plugin_content_area).show(animationDuration);
+        /* Make the plugin content area respect the rules of a remote video */
+        $(plugin_content_area).toggleClass('remote_video');
+        /* Animate in the plugin content area */
         $(local_video).css("width", "5%");
+        $(plugin_content_area).show(animationDuration);
 
+        /* setup the plugin content area now that it's been brought in: give the video src, begin playback */
         setupObservaPlugin(video, pluginArea, remote_video);
 
     } else if (target === 'broadcast') {
