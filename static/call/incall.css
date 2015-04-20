@@ -18,6 +18,8 @@
 
 .remote_video {
     z-index:-1;
+    width: 100%    !important;
+    height: auto   !important;
 }
 
 #video_container {
