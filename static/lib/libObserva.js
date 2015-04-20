@@ -56,8 +56,6 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
-
-        $("#video_container").prepend(plugin_content_element);
         $(remote_video).hide(animationDuration);
         $(plugin_content_area).toggleClass('remote_video'); //constrain the plugin content to remote_video rules
         $(plugin_content_area).show(animationDuration);
@@ -66,7 +64,6 @@ function changeObservaVideoSource(video, target) {
         setupObservaPlugin(video, pluginArea, remote_video);
 
     } else if (target === 'broadcast') {
-        $("#video_container").prepend(plugin_content_element);
         $(broadcast_video).hide(animationDuration);
         $(plugin_content_area).show(animationDuration);
         pluginArea.sr = video;
