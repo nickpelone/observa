@@ -81,6 +81,7 @@ connection.onCustomMessage = function (message) {
         }
     } else if (message.message === 'stopearly') {
         // the remote plugin is hanging up - clean up and restore the normal remote video!
+        pluginState = 'none';
         endObservaPluginEarly('broadcast');
     }
 };
