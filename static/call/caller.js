@@ -1,7 +1,8 @@
 var connection = new RTCMultiConnection().connect();
 
+/* Only perform the overrides and the event attachments after the DOM is ready. */
 $(document).ready(function () {
-    /* Set the default states of the buttons */
+    /* Set the default state of the user interface */
     $("#plugin_button")[0].disabled = true;
     $("#end_button")[0].disabled = true;
 
@@ -15,7 +16,7 @@ $(document).ready(function () {
         }
     }, 1000);
 
-
+    /* tell plugins to stop when someone leaves */
     window.onbeforeunload = function () {
         if (pluginState === 'local') {
             endObservaPluginEarly('local');
@@ -23,6 +24,10 @@ $(document).ready(function () {
             endObservaPluginEarly('remote');
         }
     };
+
+    /*
+     * Click Handlers
+     */
 
     $("#start_button").click(function (event) {
         connection.open();
@@ -35,24 +40,6 @@ $(document).ready(function () {
         endObservaPluginEarly('local');
     });
 
-    connection.onNewSession = function (session) {
-        $("#plugin_button")[0].disabled = false;
-        $("#end_button")[0].disabled = false;
-        $("#start_button")[0].disabled = true;
-        session.join();
-    };
-
-
-    connection.onCustomMessage = function (message) {
-        console.log("received a custom message: " + message);
-        if (message.message === 'plugin') {
-            /* received a video from another client to play */
-            changeObservaVideoSource(message.video, 'remote');
-        } else if (message.message === 'stopearly') {
-            // the remote plugin is hanging up - clean up and restore the normal remote video!
-            endObservaPluginEarly('remote');
-        }
-    };
     $("#plugin_button").click(function (event) {
         var prompted_video = prompt("Please enter a YouTube video URL.", '');
         if (prompted_video === null) return; //don't break because someone canceled their plugin request
@@ -74,4 +61,29 @@ $(document).ready(function () {
             }
         });
     });
+
+    /*
+     * RTCMultiConnection overridden functions
+     */
+
+    /* Override onNewSession to disable the 'start call' button when a client enters a call in progress */
+    connection.onNewSession = function (session) {
+        $("#plugin_button")[0].disabled = false;
+        $("#end_button")[0].disabled = false;
+        $("#start_button")[0].disabled = true;
+        session.join();
+    };
+
+    /* Override onCustomMessage to implement plugin functionality */
+    connection.onCustomMessage = function (message) {
+        console.log("received a custom message: " + message);
+        if (message.message === 'plugin') {
+            /* received a video from another client to play */
+            changeObservaVideoSource(message.video, 'remote');
+        } else if (message.message === 'stopearly') {
+            // the remote plugin is hanging up - clean up and restore the normal remote video!
+            endObservaPluginEarly('remote');
+        }
+    };
+
 });
