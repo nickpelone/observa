@@ -11,7 +11,7 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
 
     if (pluginClass === local_video) {
         pluginState = 'local';
-        targetElement.onended = function () {
+        targetElement.onended = function (animationDuration) {
             $(plugin_content_area).toggleClass('local_video');
             $(plugin_content_area).hide(animationDuration);
             $(local_video).show(animationDuration);
@@ -20,7 +20,7 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
         };
     } else if (pluginClass === remote_video) {
         pluginState = 'remote';
-        targetElement.onended = function () {
+        targetElement.onended = function (animationDuration) {
             $(plugin_content_area).toggleClass('remote_video'); //remove plugin content from the remote_video class before revealing remote_video
             $(plugin_content_area).hide(animationDuroation);
             $(local_video).css("width", "30%");
