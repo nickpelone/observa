@@ -4,6 +4,7 @@ var local_video = '.local_video';
 var remote_video = '.remote_video';
 var plugin_content_area = '.plugin_content_area';
 var broadcast_video = '.broadcast_video';
+var plugin_content_element = "<video class='plugin_content_area'></video>";
 
 function setupObservaPlugin(video, targetElement, pluginClass) {
     targetElement.src = video;
@@ -35,7 +36,7 @@ function setupObservaPlugin(video, targetElement, pluginClass) {
 
 function changeObservaVideoSource(video, target) {
     var pluginMsg;
-    $("#video_container").prepend("<video class='plugin_content_area'></video>");
+    $("#video_container").prepend(plugin_content_element);
     var pluginArea = $(plugin_content_area)[0];
     if (target === 'local') {
         /* First hide the local video stream from the client interface */
@@ -55,7 +56,8 @@ function changeObservaVideoSource(video, target) {
         };
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
-        $("#video_container").prepend("<video class='plugin_content_area'></video>");
+
+        $("#video_container").prepend(plugin_content_element);
         $(remote_video).hide(animationDuration);
         $(plugin_content_area).toggleClass('remote_video'); //constrain the plugin content to remote_video rules
         $(plugin_content_area).show(animationDuration);
@@ -64,7 +66,7 @@ function changeObservaVideoSource(video, target) {
         setupObservaPlugin(video, pluginArea, remote_video);
 
     } else if (target === 'broadcast') {
-        $("#video_container").prepend("<video class='plugin_content_area'></video>");
+        $("#video_container").prepend(plugin_content_element);
         $(broadcast_video).hide(animationDuration);
         $(plugin_content_area).show(animationDuration);
         pluginArea.sr = video;
