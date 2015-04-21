@@ -32,6 +32,18 @@ a{
     background: #169a2f;
 }
 
+#start_button {
+    background:#18d118;
+}
+#plugin_button {
+    background:#d118bc;
+}
+#end_button {
+    background:red;
+    color:white;
+}
+
+
 #video_container {
     position:relative;
     display:inline-block;

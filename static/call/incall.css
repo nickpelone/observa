@@ -3,10 +3,7 @@
     display: inline-block;
 }
 
-#end_button {
-    background:red;
-    color:white;
-}
+
 
 .local_video{
     width:30%;
@@ -22,9 +19,7 @@
     height: auto   !important;
 }
 
-#plugin_button {
-    background:#18d118;
-}
+
 
 
 .plugin_content_area {
