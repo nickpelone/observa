@@ -1,4 +1,9 @@
-
 #start_button {
     background:#18d118;
+}
+
+.broadcast_video{
+    /* These constrain broadcasts to device width */
+    width: 100%    !important;
+    height: auto   !important;
 }
