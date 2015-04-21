@@ -1,5 +1,5 @@
 {
     "plugin": "youtube",
     "name": "Youtube reference plugin",
-    "action": "youtube-dl -f 45 -o"
+    "action": "youtube-dl -o"
 }
