@@ -11,5 +11,5 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 
 echo "Installing dependencies from bower..."
 cd static && npm-exec bower install
-echo "Success! use 'sudo node app.js' or 'npm start' to launch Observa."
+echo "Success! use 'sudo node app.js' or 'sudo npm start' to launch Observa."
 
