@@ -42,6 +42,9 @@ Internet Explorer | | |
 
 <h1>Plugins</h1>
 Currently, there is a functional reference YouTube plugin.
+
+If you're interested in learning more, check out the <a href="https://github.com/nickpelone/observa/wiki/Observa-Plugin-Spec">Observa plugin spec</a>.
+
 Observa is still missing:
 
 1. A finalized plugin spec for 0.x releases (Targeted for <b>0.2</b>)
