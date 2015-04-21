@@ -7,7 +7,7 @@ Observa provides a system for performing video calls and broadcasts over WebRTC,
 Observa allows clients to switch out their video output from one source to another. Video sources are provided by plugins. This allows someone to switch from their webcam feed to, say, a video on YouTube, and send out that video for everyone in the same call or broadcast to watch.
 
 <h1>How to install:</h1>
-Currently, Observa server is only supported on Unix-like platforms(Mac OS X, Linux, *BSD) whose filesystem follows the Unix convention(e.g. root is at '/'). Support for Windows is planned for a future release. The impatient may consider editing the path of the ````plugin-depot```` in ````observa_modules/web_middleware/web.js```` to a Windows-compatible path, and removing root checks in ````app.js````.
+Currently, Observa server is only supported on Unix-like platforms(Mac OS X, Linux, *BSD) whose filesystem follows the Unix convention(e.g. root is at ````/````). Support for Windows is planned for a future release. The impatient may consider editing the path of the ````plugin-depot```` in ````observa_modules/web_middleware/web.js```` to a Windows-compatible path, and removing root checks in ````app.js````.
 
 1. Clone the repo
 2. Run ````prepare-dependencies.sh```` to install the npm and bower dependencies into the project.
@@ -39,3 +39,14 @@ Mozilla Firefox | <b>X</b> | |
 Opera | <b>?</b> | <b>?</b> |
 Safari | | |
 Internet Explorer | | |
+
+<h1>Plugins</h1>
+Currently, there is a functional reference YouTube plugin.
+
+If you're interested in learning more, check out the <a href="https://github.com/nickpelone/observa/wiki/Observa-Plugin-Spec">Observa plugin spec</a>.
+
+Observa is still missing:
+
+1. A finalized plugin spec for 0.x releases (Targeted for <b>0.2</b>)
+2. A plugin picker UI element. Right now the plus button auto-selects the YouTube plugin. (Targeted for <b>0.2</b>)
+
