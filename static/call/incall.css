@@ -22,12 +22,6 @@
     height: auto   !important;
 }
 
-#video_container {
-    position:relative;
-    display:inline-block;
-    overflow:hidden;
-}
-
 #plugin_button {
     background:#18d118;
 }

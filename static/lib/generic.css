@@ -31,3 +31,9 @@ a{
 #startBroadcast{
     background: #169a2f;
 }
+
+#video_container {
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+}
