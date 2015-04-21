@@ -5,5 +5,5 @@
 .broadcast_video{
     /* These constrain broadcasts to device width */
     width: 100%    !important;
-    height: auto   !important;
+    height: 50%   !important;
 }
