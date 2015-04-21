@@ -1,4 +1,5 @@
 <h1>Observa</h1>
+<h4>0.1.0</h4>
 A Node.js server and browser-side client for video sharing, calling, and broadcasting.
 
 Observa provides a system for performing video calls and broadcasts over WebRTC, powered by RTCMultiConnection.
