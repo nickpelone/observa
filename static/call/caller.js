@@ -57,7 +57,7 @@ $(document).ready(function () {
                 console.log("Successfully posted");
                 console.log(data);
                 if (data.error) return;
-                changeObservaVideoSource(data.video, 'local');
+                changeObservaVideoSource(location.origin + data.video, 'local');
             }
         });
     });
@@ -79,7 +79,7 @@ $(document).ready(function () {
         console.log("received a custom message: " + message);
         if (message.message === 'plugin') {
             /* received a video from another client to play */
-            changeObservaVideoSource(message.video, 'remote');
+            changeObservaVideoSource(location.origin + message.video, 'remote');
         } else if (message.message === 'stopearly') {
             // the remote plugin is hanging up - clean up and restore the normal remote video!
             endObservaPluginEarly('remote');
