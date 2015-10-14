@@ -45,7 +45,7 @@ exports.startWebInterface = function (port) {
             if (error === null) {
                 /* we successfully ran the external script */
                 var observaPluginResponse = {
-                    'video': 'http://observa.nickpelone.com/plugin-depot/' + pluginVideoCount + '.mp4',
+                    'video': '/plugin-depot/' + pluginVideoCount + '.mp4',
                 };
                 pluginVideoCount++;
                 res.send(observaPluginResponse);
