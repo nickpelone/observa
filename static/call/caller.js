@@ -76,7 +76,8 @@ $(document).ready(function () {
 
     /* Override onCustomMessage to implement plugin functionality */
     connection.onCustomMessage = function (message) {
-        console.log("received a custom message: " + message);
+        console.log("received a custom message:");
+        console.dir(message);
         if (message.message === 'plugin') {
             /* received a video from another client to play */
             changeObservaVideoSource(location.origin + message.video, 'remote');
