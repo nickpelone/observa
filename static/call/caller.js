@@ -80,7 +80,7 @@ $(document).ready(function () {
         console.dir(message);
         if (message.message === 'plugin') {
             /* received a video from another client to play */
-            changeObservaVideoSource(location.origin + message.video, 'remote');
+            changeObservaVideoSource(message.video, 'remote');
         } else if (message.message === 'stopearly') {
             // the remote plugin is hanging up - clean up and restore the normal remote video!
             endObservaPluginEarly('remote');
