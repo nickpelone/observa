@@ -81,6 +81,7 @@ function changeObservaVideoSource(video, target) {
             'message': 'plugin',
             'video': video
         };
+        // XXX: TODO: ABOVE IS WHY clients receiving a video don't have to add location.origin to video path
         connection.sendCustomMessage(pluginMsg);
     } else if (target === 'remote') {
         /* Hide the remote stream, its being replaced with a plugin video */
